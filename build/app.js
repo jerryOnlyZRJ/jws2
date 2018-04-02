@@ -4,10 +4,6 @@ var _koa = require('koa');
 
 var _koa2 = _interopRequireDefault(_koa);
 
-var _path = require('path');
-
-var _path2 = _interopRequireDefault(_path);
-
 var _koaStatic = require('koa-static');
 
 var _koaStatic2 = _interopRequireDefault(_koaStatic);
@@ -36,15 +32,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const app = new _koa2.default();
 
-//配置静态资源
-app.use((0, _koaStatic2.default)(_path2.default.join(__dirname, 'assets')));
+// 配置静态资源
+app.use((0, _koaStatic2.default)(_config2.default.assetsPath));
 
-//配置模版引擎
+// 配置模版引擎
 app.context.render = _co2.default.wrap((0, _koaSwig2.default)({
-    root: _path2.default.join(__dirname, 'views'),
+    root: _config2.default.viewsPath,
     autoescape: true,
+    varControls: ['[[', ']]'], //自定义模板匹配
     cache: 'memory', // disable, set to false (配置缓存)
-    ext: 'html', //匹配模版类型
+    ext: 'html', // 匹配模版类型
     writeBody: false
 }));
 

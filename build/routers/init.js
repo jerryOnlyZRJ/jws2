@@ -14,13 +14,13 @@ var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//项目路由初始化文件
+// 项目路由初始化文件
 const router = new _koaRouter2.default();
 
-//index模块路由，对应index.js文件
+// index模块路由，对应index.js文件
 router.get('/index', _index2.default.index());
 router.get('/data', _index2.default.data());
 
-//...其他模块路由
+// ...其他模块路由
 
 exports.default = router;

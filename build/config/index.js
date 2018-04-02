@@ -15,8 +15,10 @@ var _path2 = _interopRequireDefault(_path);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 let CONFIG = {
-    "env": process.env.NODE_ENV, //"development", "production"
-    "404Path": _path2.default.join(__dirname, '../views/404.html')
+    'env': process.env.NODE_ENV, //"development", "production"
+    '404Path': _path2.default.join(__dirname, '../views/404.html'),
+    'viewsPath': _path2.default.join(__dirname, '../views'),
+    'assetsPath': _path2.default.join(__dirname, '../assets')
 };
 if (process.env.NODE_ENV === "development") {
     const localConfig = {
