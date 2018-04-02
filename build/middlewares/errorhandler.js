@@ -19,7 +19,9 @@ var _config2 = _interopRequireDefault(_config);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _log4js2.default.configure({
+    //log输出文件配置
     appenders: { cheese: { type: 'file', filename: 'cheese.log' } },
+    //错误类别配置
     categories: { default: { appenders: ['cheese'], level: 'error' } }
 });
 
@@ -27,6 +29,7 @@ _log4js2.default.configure({
 const logger = _log4js2.default.getLogger('cheese');
 const errorHandler = {
     error(app) {
+        // 配合中间件迭代器进行容错处理
         app.use(async (ctx, next) => {
             try {
                 await next();
@@ -42,7 +45,7 @@ const errorHandler = {
             if (404 != ctx.status) return;
             ctx.status = 404;
             logger.error('页面丢了');
-            ctx.body = await _fs2.default.createReadStream(_config2.default['404Path']);
+            ctx.body = await ctx.render('404');
         });
     }
 };

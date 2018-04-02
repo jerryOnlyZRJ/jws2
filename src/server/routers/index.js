@@ -3,9 +3,12 @@ import indexModel from '../models'
 
 const indexRouters = {
     index() {
-        return (ctx, next) => {
+        return async(ctx, next) => {
             // ctx.router available
-            ctx.body = "This in index!"
+            ctx.body = await ctx.render('index', {
+                name: 'Jerry',
+                data: 'Welcome to koa'
+            })
         }
     },
     data() {

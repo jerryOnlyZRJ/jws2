@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server:dev": "gulp",
-    "server:prod": "cross-env NODE_ENV=production gulp",
+    "gulp:dev": "gulp",
+    "gulp:prod": "cross-env NODE_ENV=production gulp",
     "start": "node ./build/app.js",
     "start:dev": "cross-env NODE_ENV=development node ./build/app.js"
   },
@@ -14,10 +14,12 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "co": "^4.6.0",
     "cross-env": "^5.1.4",
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
+    "koa-swig": "^2.2.1",
     "lodash": "^4.17.5",
     "log4js": "^2.5.3",
     "request": "^2.85.0",

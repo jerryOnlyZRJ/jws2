@@ -6,7 +6,7 @@ const replace = require('rollup-plugin-replace');
 
 gulp.task('builddev', cb => {
     pump([
-            gulp.src(['src/server/**/*.js', 'src/server/app.js']), //'**'指所有文件夹，'*'指所有文件
+            gulp.src(['src/server/**/*.js', 'src/server/app.js', '!src/server/views/*.js']), //'**'指所有文件夹，'*'指所有文件
             babel({
                 babelrc: false,
                 'plugins': ['transform-es2015-modules-commonjs']

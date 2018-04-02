@@ -24,6 +24,14 @@ var _errorhandler = require('./middlewares/errorhandler');
 
 var _errorhandler2 = _interopRequireDefault(_errorhandler);
 
+var _koaSwig = require('koa-swig');
+
+var _koaSwig2 = _interopRequireDefault(_koaSwig);
+
+var _co = require('co');
+
+var _co2 = _interopRequireDefault(_co);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const app = new _koa2.default();
@@ -31,7 +39,17 @@ const app = new _koa2.default();
 //配置静态资源
 app.use((0, _koaStatic2.default)(_path2.default.join(__dirname, 'assets')));
 
+//配置模版引擎
+app.context.render = _co2.default.wrap((0, _koaSwig2.default)({
+    root: _path2.default.join(__dirname, 'views'),
+    autoescape: true,
+    cache: 'memory', // disable, set to false (配置缓存)
+    ext: 'html', //匹配模版类型
+    writeBody: false
+}));
+
 // 容错处理
+// 容错机制必须放在路由分配之前
 _errorhandler2.default.error(app);
 
 // 路由分配

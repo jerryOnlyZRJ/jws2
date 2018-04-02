@@ -3,7 +3,9 @@ import fs from 'fs'
 import CONFIG from '../config'
 
 log4js.configure({
+    //log输出文件配置
     appenders: { cheese: { type: 'file', filename: 'cheese.log' } },
+    //错误类别配置
     categories: { default: { appenders: ['cheese'], level: 'error' } }
 });
 
@@ -11,10 +13,11 @@ log4js.configure({
 const logger = log4js.getLogger('cheese');
 const errorHandler = {
     error(app) {
+        // 配合中间件迭代器进行容错处理
         app.use(async(ctx, next) => {
             try {
                 await next()
-            } catch(err) {
+            } catch (err) {
                 // node错误日志
                 logger.error(err)
                 ctx.status = err.status || 500
@@ -26,7 +29,7 @@ const errorHandler = {
             if (404 != ctx.status) return
             ctx.status = 404
             logger.error('页面丢了')
-            ctx.body = await fs.createReadStream(CONFIG['404Path']);
+            ctx.body = await ctx.render('404');
         })
     }
 }

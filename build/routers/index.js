@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _models = require("../models");
+var _models = require('../models');
 
 var _models2 = _interopRequireDefault(_models);
 
@@ -12,9 +12,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const indexRouters = {
     index() {
-        return (ctx, next) => {
+        return async (ctx, next) => {
             // ctx.router available
-            ctx.body = "This in index!";
+            ctx.body = await ctx.render('index', {
+                name: 'Jerry',
+                data: 'Welcome to koa'
+            });
         };
     },
     data() {
