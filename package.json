@@ -10,6 +10,7 @@
     "start:dev": "cross-env NODE_ENV=development node ./build/app.js",
     "test": "jest --coverage --forceExit",
     "test:e2e": "node ./tests/e2e.js",
+    "precommit": "npm test",
     "docs": "jsdoc ./src/server/**/*.js -d ./docs/jsdocs"
   },
   "author": "920997736@qq.com",
@@ -33,6 +34,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
     "gulp-rollup": "^2.16.2",
+    "husky": "^0.15.0-rc.13",
     "jest": "^22.4.3",
     "jsdoc": "^3.5.5",
     "pump": "^3.0.0",
