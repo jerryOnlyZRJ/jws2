@@ -1,3 +1,7 @@
+/**
+ * @description 容错机制中间件
+ * @author Jerry
+ */
 import log4js from 'log4js'
 import CONFIG from '../config'
 
@@ -7,10 +11,17 @@ log4js.configure({
   // 错误类别配置
   categories: { default: { appenders: ['cheese'], level: 'error' } }
 })
-
-// 错误日志插件
 const logger = log4js.getLogger('cheese')
+
+/**
+ * 容错处理对象
+ * @type {Object}
+ */
 const errorHandler = {
+  /**
+   * 错误处理句柄
+   * @param  {Object} app koa2上下文
+   */
   error (app) {
     // 配合中间件迭代器进行容错处理
     app.use(async (ctx, next) => {

@@ -10,7 +10,15 @@ var _models2 = _interopRequireDefault(_models);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * index模块路由中间件对象
+ * @type {Object}
+ */
 const indexRouters = {
+  /**
+   * index页面呈现接口
+   * @return {async Function}
+   */
   index() {
     return async (ctx, next) => {
       // ctx.router available
@@ -20,11 +28,21 @@ const indexRouters = {
       });
     };
   },
+  /**
+   * index模块数据拉取接口
+   * @return {async Function}
+   */
   data() {
     return async (ctx, next) => {
       const indexModelIns = new _models2.default();
-      ctx.body = await indexModelIns.getData();
+      const data = await indexModelIns.getData();
+      ctx.body = {
+        data: data
+      };
     };
   }
-}; // index模块路由中间件执行函数
+}; /**
+    * @description index模块路由中间件
+    * @author Jerry
+    */
 exports.default = indexRouters;

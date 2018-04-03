@@ -14,16 +14,27 @@ var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * @description 容错机制中间件
+ * @author Jerry
+ */
 _log4js2.default.configure({
   // log输出文件配置
   appenders: { cheese: { type: 'file', filename: 'cheese.log' } },
   // 错误类别配置
   categories: { default: { appenders: ['cheese'], level: 'error' } }
 });
-
-// 错误日志插件
 const logger = _log4js2.default.getLogger('cheese');
+
+/**
+ * 容错处理对象
+ * @type {Object}
+ */
 const errorHandler = {
+  /**
+   * 错误处理句柄
+   * @param  {Object} app koa2上下文
+   */
   error(app) {
     // 配合中间件迭代器进行容错处理
     app.use(async (ctx, next) => {

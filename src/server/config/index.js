@@ -1,6 +1,14 @@
+/**
+ * @description node层配置文档
+ * @author Jerry
+ */
 import _ from 'lodash'
 import path from 'path'
 
+/**
+ * node配置对象
+ * @type {Object}
+ */
 let CONFIG = {
     'env': process.env.NODE_ENV, //"development", "production"
     '404Path': path.join(__dirname, '../views/404.html'),

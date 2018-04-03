@@ -1,35 +1,31 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var _lodash = require('lodash');
+var _ = _interopDefault(require('lodash'));
+var path = _interopDefault(require('path'));
 
-var _lodash2 = _interopRequireDefault(_lodash);
+/**
+ * @description node层配置文档
+ * @author Jerry
+ */
 
-var _path = require('path');
-
-var _path2 = _interopRequireDefault(_path);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+/**
+ * node配置对象
+ * @type {Object}
+ */
 let CONFIG = {
-    'env': process.env.NODE_ENV, //"development", "production"
-    '404Path': _path2.default.join(__dirname, '../views/404.html'),
-    'viewsPath': _path2.default.join(__dirname, '../views'),
-    'assetsPath': _path2.default.join(__dirname, '../assets')
+    'env': "production", //"development", "production"
+    '404Path': path.join(__dirname, '../views/404.html'),
+    'viewsPath': path.join(__dirname, '../views'),
+    'assetsPath': path.join(__dirname, '../assets')
 };
-if (process.env.NODE_ENV === "development") {
-    const localConfig = {
-        port: 8081
-    };
-    CONFIG = _lodash2.default.extend(CONFIG, localConfig);
-}
-if (process.env.NODE_ENV === "production") {
+{
     const prodConfig = {
         port: 80
     };
-    CONFIG = _lodash2.default.extend(CONFIG, prodConfig);
+    CONFIG = _.extend(CONFIG, prodConfig);
 }
-exports.default = CONFIG;
+var CONFIG$1 = CONFIG
+
+module.exports = CONFIG$1;

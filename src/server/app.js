@@ -32,3 +32,6 @@ app.use(router.routes(), router.allowedMethods())
 app.listen(CONFIG.port, () => {
     console.log(`website is starting at port ${CONFIG.port}`)
 })
+
+//导出koa2实例用于api测试
+export default app
