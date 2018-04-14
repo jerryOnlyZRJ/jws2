@@ -22,7 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @description index数据拉取模块
  * @author Jerry
  */
-class IndexModel {
+let UserService = class UserService {
   constructor() {}
   /**
    * 数据拉取方法
@@ -34,6 +34,5 @@ class IndexModel {
       return $('.mnav').text();
     });
   }
-}
-
-exports.default = IndexModel;
+};
+exports.default = UserService;

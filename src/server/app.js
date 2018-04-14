@@ -1,12 +1,28 @@
 import Koa from 'koa'
 import assets from 'koa-static'
-import router from './routers/init'
 import CONFIG from './config'
 import errorHandler from './middlewares/errorhandler'
 import render from 'koa-swig'
 import co from 'co'
+import { Lifetime, createContainer} from 'awilix'
+import { loadControllers, scopePerRequest } from 'awilix-koa'
 
 const app = new Koa()
+// 创建IoC容器
+const container = createContainer()
+//IoC实现，保证每一次的请求都是一个新实例
+app.use(scopePerRequest(container))
+// 装载所有的models并将其注入到routers
+container.loadModules([__dirname + '/services/*.js'], {
+  formatName: 'camelCase',
+  resolverOptions: {
+    lifetime: Lifetime.SCOPED
+  }
+})
+// 容错处理必须放在路由分配之前
+errorHandler.error(app)
+//注册所有路由
+app.use(loadControllers(__dirname + '/routers/*.js', { cwd: __dirname }))
 
 // 配置静态资源
 app.use(assets(CONFIG.assetsPath))
@@ -20,13 +36,6 @@ app.context.render = co.wrap(render({
     ext: 'html', // 匹配模版类型
     writeBody: false
 }))
-
-// 容错处理
-// 容错机制必须放在路由分配之前
-errorHandler.error(app)
-
-// 路由分配
-app.use(router.routes(), router.allowedMethods())
 
 // 端口监听
 app.listen(CONFIG.port, () => {

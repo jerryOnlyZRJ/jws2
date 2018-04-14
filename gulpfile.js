@@ -9,9 +9,9 @@ gulp.task('builddev', cb => {
     gulp.src(['src/server/**/*.js', 'src/server/app.js', '!src/server/views/*.js']), // '**'指所有文件夹，'*'指所有文件
     babel({
       babelrc: false,
-      'plugins': ['transform-es2015-modules-commonjs']
+      'plugins': ['transform-es2015-modules-commonjs', "transform-decorators-legacy"]
     }),
-    gulp.dest('build')
+    gulp.dest('dist')
   ],
   cb
   )
@@ -29,7 +29,7 @@ gulp.task('buildprod', cb => {
     babel({
       babelrc: false,
       ignore: ['src/server/config/index.js'],
-      'plugins': ['transform-es2015-modules-commonjs']
+      'plugins': ['transform-es2015-modules-commonjs', "transform-decorators-legacy"]
     }),
     rollup({
       output: {
@@ -44,7 +44,7 @@ gulp.task('buildprod', cb => {
         })
       ]
     }),
-    gulp.dest('build')
+    gulp.dest('dist')
   ],
   cb
   )

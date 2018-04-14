@@ -9,8 +9,10 @@ import cheerio from 'cheerio'
  * IndexModel类
  * @type {Class}
  */
-class IndexModel {
-  constructor () {}
+class UserService {
+  constructor () {
+    
+  }
   /**
    * 数据拉取方法
    * @return {Promise} 
@@ -23,4 +25,4 @@ class IndexModel {
   }
 }
 
-export default IndexModel
+export default UserService

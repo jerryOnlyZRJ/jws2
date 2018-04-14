@@ -1,0 +1,10 @@
+{% extends '../../common/layout.html' %}
+{% block title %} Welcome  [[ name ]] {% endblock%}
+{% block head %}{% endblock %}
+{% block styles %}{% endblock %}
+{% block content %}
+	{% include '../../../widgets/topbanner/topbanner.html' %}
+	<p> username: [[ name ]] </p><p> Welcome: [[ data ]] </p>
+	{% include '../../../widgets/footer/footer.html' %}
+{% endblock %}
+{% block scripts %}{% endblock %}
