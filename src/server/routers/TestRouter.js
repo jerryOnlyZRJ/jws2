@@ -10,7 +10,7 @@ export default class TestRouter {
     @GET()
     async getTest(ctx) {
         const result = this.testService.find()
-        ctx.body = await ctx.render('index', {
+        ctx.body = await ctx.render('index/pages/index', {
             name: 'Jerry',
             data: result
         })
@@ -22,7 +22,7 @@ export default class TestRouter {
     async getUser(ctx) {
         const result = await this.userService.getData()
         const id = ctx.params.id
-        ctx.body = await ctx.render('index', {
+        ctx.body = await ctx.render('index/pages/index', {
             name: id,
             data: result
         })

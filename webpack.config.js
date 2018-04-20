@@ -5,6 +5,11 @@ const files = glob.sync('./src/client/views/**/*.entry.js')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const { join, basename } = require('path')
+const htmlAfterWebpackPlugin = require('./config/htmlAfterWebpackPlugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const _mode = argv.mode || "development";
+const _mergeConfig = require(`./config/webpack.${_mode}.js`);
 let _entry = {}
 const fileReg = /\/(\w+-\w+)(\.entry\.js)$/
 for (let item of files) {
@@ -12,7 +17,6 @@ for (let item of files) {
         _entry[$1] = item
     })
 }
-const _mergeConfig = require(`./config/webpack.${argv.mode}.js`)
 let _localConfig = {
     entry: _entry,
     output: {
@@ -29,7 +33,7 @@ let _localConfig = {
                 use: [{
                         loader: 'css-loader',
                         options: {
-                            importLoaders: 1,
+                            importLoaders: 1
                         }
                     },
                     'postcss-loader'
@@ -38,11 +42,24 @@ let _localConfig = {
         }]
     },
     plugins: [
-        new CleanWebpackPlugin(['dist/assets/*'], {
+        new CleanWebpackPlugin(['dist/assets/*', 'dist/views/*'], {
             root: __dirname,
             verbose: true,
             dry: false
         }),
+        new CopyWebpackPlugin([{
+            from: 'src/client/views/common/layout.html',
+            to: '../views/common/layout.html'
+        }, {
+            from: 'src/client/views/common/404.html',
+            to: '../views/common/404.html'
+        }]),
+        new HtmlWebpackPlugin({
+            filename: '../views/index/pages/index.html',
+            template: __dirname + '/src/client/views/index/pages/index.html',
+            inject: false
+        }),
+        new htmlAfterWebpackPlugin()
     ]
 }
 module.exports = merge(_localConfig, _mergeConfig)

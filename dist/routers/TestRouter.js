@@ -46,7 +46,7 @@ let TestRouter = (_dec = (0, _awilixKoa.route)('/test'), _dec2 = (0, _awilixKoa.
 
     async getTest(ctx) {
         const result = this.testService.find();
-        ctx.body = await ctx.render('index', {
+        ctx.body = await ctx.render('index/pages/index', {
             name: 'Jerry',
             data: result
         });
@@ -57,7 +57,7 @@ let TestRouter = (_dec = (0, _awilixKoa.route)('/test'), _dec2 = (0, _awilixKoa.
     async getUser(ctx) {
         const result = await this.userService.getData();
         const id = ctx.params.id;
-        ctx.body = await ctx.render('index', {
+        ctx.body = await ctx.render('index/pages/index', {
             name: id,
             data: result
         });

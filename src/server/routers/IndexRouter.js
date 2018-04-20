@@ -9,7 +9,7 @@ export default class IndexRouter {
 
     @GET()
     async getIndex(ctx, next) {
-        ctx.body = await ctx.render('index', {
+        ctx.body = await ctx.render('index/pages/index', {
         	data: "我是直出的页面",
         	name: 'Jerry'
         });

@@ -44,7 +44,7 @@ let IndexRouter = (_dec = (0, _awilixKoa.route)('/'), _dec2 = (0, _awilixKoa.rou
     }
 
     async getIndex(ctx, next) {
-        ctx.body = await ctx.render('index', {
+        ctx.body = await ctx.render('index/pages/index', {
             data: "我是直出的页面",
             name: 'Jerry'
         });
