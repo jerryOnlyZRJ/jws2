@@ -1,3 +1,7 @@
+:root {
+    --mainColor: #188eee;
+}
+
 .widgets-footer span {
-	color: orange;
+    color: var(--mainColor);
 }

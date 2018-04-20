@@ -1,4 +1,4 @@
-import 'topbanner.css'
+import './topbanner.css'
 
 class Topbanner {
     init() {
