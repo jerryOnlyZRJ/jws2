@@ -30,7 +30,6 @@ let _localConfig = {
                         loader: 'css-loader',
                         options: {
                             importLoaders: 1,
-                            minimize: _modeflag
                         }
                     },
                     'postcss-loader'
@@ -43,7 +42,7 @@ let _localConfig = {
             root: __dirname,
             verbose: true,
             dry: false
-        })
+        }),
     ]
 }
 module.exports = merge(_localConfig, _mergeConfig)

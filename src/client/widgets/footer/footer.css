@@ -2,6 +2,8 @@
     --mainColor: #188eee;
 }
 
-.widgets-footer span {
-    color: var(--mainColor);
+.widgets-footer {
+    & span {
+        color: var(--mainColor);
+    }
 }
