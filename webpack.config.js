@@ -4,10 +4,17 @@ const glob = require('glob')
 const files = glob.sync('./src/client/views/**/*.entry.js')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const { join, basename } = require('path')
+const {
+    join,
+    basename
+} = require('path')
 const htmlAfterWebpackPlugin = require('./config/htmlAfterWebpackPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const postcssPresetEnv = require('postcss-preset-env')
+
+
+
 const _mode = argv.mode || "development";
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
 let _entry = {}
@@ -31,14 +38,30 @@ let _localConfig = {
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",
                 use: [{
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1
-                        }
-                    },
-                    'postcss-loader'
-                ]
+                    loader: 'css-loader',
+                    options: {
+                        importLoaders: 1
+                    }
+                }, {
+                    loader: 'postcss-loader',
+                    options: {
+                        ident: 'postcss',
+                        plugins: () => [
+                            postcssPresetEnv({
+                                stage: 0
+                            })
+                        ]
+                    }
+                }]
             })
+        }, {
+            test: /\.(png|jpg|gif)$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: 'images/[name]-[hash:5].[ext]'
+                }
+            }]
         }]
     },
     plugins: [

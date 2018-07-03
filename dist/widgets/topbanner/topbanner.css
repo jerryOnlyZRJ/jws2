@@ -1,0 +1,5 @@
+.widgets-topbanner {
+    & h1 {
+        color: #188eee;
+    }
+}
