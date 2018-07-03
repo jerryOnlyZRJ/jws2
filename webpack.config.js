@@ -2,7 +2,6 @@ const argv = require('yargs-parser')(process.argv.slice(2))
 const merge = require('webpack-merge')
 const glob = require('glob')
 const files = glob.sync('./src/client/views/**/*.entry.js')
-// const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const {
