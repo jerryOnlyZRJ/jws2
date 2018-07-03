@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],[function(n,i,o){"use strict";o.r(i);o(7);var s=class{init(){console.log("init topbanner")}};o(2);var t=class{init(){console.log("init topbanner")}};const c=new s,e=new t;c.init(),e.init()}]]);

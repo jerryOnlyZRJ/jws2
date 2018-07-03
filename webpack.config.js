@@ -2,7 +2,8 @@ const argv = require('yargs-parser')(process.argv.slice(2))
 const merge = require('webpack-merge')
 const glob = require('glob')
 const files = glob.sync('./src/client/views/**/*.entry.js')
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+// const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const {
     join,
@@ -61,9 +62,8 @@ let _localConfig = {
         rules: [{
             test: /\.css$/,
             exclude: /node_modules/,
-            use: ExtractTextPlugin.extract({
-                fallback: "style-loader",
-                use: [{
+            use: [
+                _mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, {
                     loader: 'css-loader',
                     options: {
                         importLoaders: 1
@@ -78,8 +78,8 @@ let _localConfig = {
                             })
                         ]
                     }
-                }]
-            })
+                }
+            ]
         }, {
             test: /\.(png|jpg|gif)$/,
             use: [{
@@ -103,6 +103,10 @@ let _localConfig = {
             from: 'src/client/views/common/404.html',
             to: '../views/common/404.html'
         }]),
+        new MiniCssExtractPlugin({
+            filename: 'styles/[name].[hash:5].css',
+            chunkFilename: 'styles/[id].[hash:5].css',
+        }),
         new HtmlWebpackPlugin({
             filename: '../views/index/pages/index.html',
             template: __dirname + '/src/client/views/index/pages/index.html',
