@@ -20,9 +20,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 _log4js2.default.configure({
   // log输出文件配置
-  appenders: { cheese: { type: 'file', filename: './logs/jwslog.log' } },
+  appenders: {
+    cheese: {
+      type: 'file',
+      filename: './logs/jwslog.log'
+    }
+  },
   // 错误类别配置
-  categories: { default: { appenders: ['cheese'], level: 'error' } }
+  categories: {
+    default: {
+      appenders: ['cheese'],
+      level: 'error'
+    }
+  }
 });
 const logger = _log4js2.default.getLogger('cheese');
 
@@ -51,7 +61,7 @@ const errorHandler = {
       await next();
       if (ctx.status !== 404) return;
       ctx.status = 404;
-      ctx.body = await ctx.render('404');
+      ctx.body = await ctx.render('common/404');
     });
   }
 };

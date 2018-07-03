@@ -11,7 +11,6 @@ import path from 'path'
  */
 let CONFIG = {
     'env': process.env.NODE_ENV, //"development", "production"
-    '404Path': path.join(__dirname, '../views/common/404.html'),
     'viewsPath': path.join(__dirname, '../views'),
     'assetsPath': path.join(__dirname, '../assets')
 }

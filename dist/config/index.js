@@ -24,7 +24,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  */
 let CONFIG = {
     'env': process.env.NODE_ENV, //"development", "production"
-    '404Path': _path2.default.join(__dirname, '../views/common/404.html'),
     'viewsPath': _path2.default.join(__dirname, '../views'),
     'assetsPath': _path2.default.join(__dirname, '../assets')
 };

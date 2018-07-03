@@ -7,9 +7,19 @@ import CONFIG from '../config'
 
 log4js.configure({
   // log输出文件配置
-  appenders: { cheese: { type: 'file', filename: './logs/jwslog.log' } },
+  appenders: {
+    cheese: {
+      type: 'file',
+      filename: './logs/jwslog.log'
+    }
+  },
   // 错误类别配置
-  categories: { default: { appenders: ['cheese'], level: 'error' } }
+  categories: {
+    default: {
+      appenders: ['cheese'],
+      level: 'error'
+    }
+  }
 })
 const logger = log4js.getLogger('cheese')
 
@@ -22,7 +32,7 @@ const errorHandler = {
    * 错误处理句柄
    * @param  {Object} app koa2上下文
    */
-  error (app) {
+  error(app) {
     // 配合中间件迭代器进行容错处理
     app.use(async (ctx, next) => {
       try {
@@ -38,7 +48,7 @@ const errorHandler = {
       await next()
       if (ctx.status !== 404) return
       ctx.status = 404
-      ctx.body = await ctx.render('404')
+      ctx.body = await ctx.render('common/404')
     })
   }
 }
