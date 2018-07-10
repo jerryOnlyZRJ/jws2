@@ -1,8 +1,16 @@
-import { route, GET, POST, before } from 'awilix-koa'
+import {
+    route,
+    GET,
+    POST,
+    before
+} from 'awilix-koa'
 
 @route('/test')
 export default class TestRouter {
-    constructor({ testService, userService }) {
+    constructor({
+        testService,
+        userService
+    }) {
         this.testService = testService
         this.userService = userService
     }
@@ -20,11 +28,11 @@ export default class TestRouter {
     @route("/:id")
     @GET()
     async getUser(ctx) {
-        const result = await this.userService.getData()
+        // const result = await this.userService.getData()
         const id = ctx.params.id
         ctx.body = await ctx.render('index/pages/index', {
             name: id,
-            data: result
+            data: 'test sub route'
         })
     }
 }

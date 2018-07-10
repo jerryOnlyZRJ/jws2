@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _log4js = require('log4js');
 
 var _log4js2 = _interopRequireDefault(_log4js);
@@ -14,16 +18,12 @@ var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * @description 容错机制中间件
- * @author Jerry
- */
 _log4js2.default.configure({
   // log输出文件配置
   appenders: {
     cheese: {
       type: 'file',
-      filename: './logs/jwslog.log'
+      filename: _path2.default.resolve(__dirname, '../logs/jwslog.log')
     }
   },
   // 错误类别配置
@@ -33,7 +33,11 @@ _log4js2.default.configure({
       level: 'error'
     }
   }
-});
+}); /**
+     * @description 容错机制中间件
+     * @author Jerry
+     */
+
 const logger = _log4js2.default.getLogger('cheese');
 
 /**

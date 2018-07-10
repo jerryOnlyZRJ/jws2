@@ -1,0 +1,360 @@
+[2018-07-09T17:33:02.425] [ERROR] cheese - { RequestError: Error: connect ETIMEDOUT 14.215.177.38:80
+    at new RequestError (F:\workspaces\jws2\node_modules\request-promise-core\lib\errors.js:14:15)
+    at Request.plumbing.callback (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:87:29)
+    at Request.RP$callback [as _callback] (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:46:31)
+    at self.callback (F:\workspaces\jws2\node_modules\request\request.js:185:22)
+    at emitOne (events.js:116:13)
+    at Request.emit (events.js:211:7)
+    at Request.onRequestError (F:\workspaces\jws2\node_modules\request\request.js:877:8)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+    at Socket.socketErrorListener (_http_client.js:387:9)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+From previous event:
+    at Request.plumbing.init (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:36:28)
+    at Request.RP$initInterceptor [as init] (F:\workspaces\jws2\node_modules\request-promise-core\configure\request2.js:41:27)
+    at new Request (F:\workspaces\jws2\node_modules\request\request.js:127:8)
+    at request (F:\workspaces\jws2\node_modules\request\index.js:53:10)
+    at UserService.getData (F:\workspaces\jws2\dist\services\UserService.js:32:41)
+    at TestRouter.getUser (F:\workspaces\jws2\dist\routers\TestRouter.js:58:47)
+    at memberInvoker (F:\workspaces\jws2\node_modules\awilix-koa\lib\invokers.js:80:45)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\workspaces\jws2\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:61:13)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:52:15)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at scopePerRequestMiddleware (F:\workspaces\jws2\node_modules\awilix-koa\lib\scope-per-request.js:13:16)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at Application.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:150:12)
+    at Server.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:132:19)
+  name: 'RequestError',
+  message: 'Error: connect ETIMEDOUT 14.215.177.38:80',
+  cause: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  error: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  options: 
+   { uri: 'http://www.baidu.com',
+     callback: [Function: RP$callback],
+     transform: undefined,
+     simple: true,
+     resolveWithFullResponse: false,
+     transform2xxOnly: false },
+  response: undefined }
+[2018-07-09T17:33:09.101] [ERROR] cheese - { RequestError: Error: connect ETIMEDOUT 14.215.177.38:80
+    at new RequestError (F:\workspaces\jws2\node_modules\request-promise-core\lib\errors.js:14:15)
+    at Request.plumbing.callback (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:87:29)
+    at Request.RP$callback [as _callback] (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:46:31)
+    at self.callback (F:\workspaces\jws2\node_modules\request\request.js:185:22)
+    at emitOne (events.js:116:13)
+    at Request.emit (events.js:211:7)
+    at Request.onRequestError (F:\workspaces\jws2\node_modules\request\request.js:877:8)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+    at Socket.socketErrorListener (_http_client.js:387:9)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+From previous event:
+    at Request.plumbing.init (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:36:28)
+    at Request.RP$initInterceptor [as init] (F:\workspaces\jws2\node_modules\request-promise-core\configure\request2.js:41:27)
+    at new Request (F:\workspaces\jws2\node_modules\request\request.js:127:8)
+    at request (F:\workspaces\jws2\node_modules\request\index.js:53:10)
+    at UserService.getData (F:\workspaces\jws2\dist\services\UserService.js:32:41)
+    at TestRouter.getUser (F:\workspaces\jws2\dist\routers\TestRouter.js:58:47)
+    at memberInvoker (F:\workspaces\jws2\node_modules\awilix-koa\lib\invokers.js:80:45)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\workspaces\jws2\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:61:13)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:52:15)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at scopePerRequestMiddleware (F:\workspaces\jws2\node_modules\awilix-koa\lib\scope-per-request.js:13:16)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at Application.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:150:12)
+    at Server.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:132:19)
+  name: 'RequestError',
+  message: 'Error: connect ETIMEDOUT 14.215.177.38:80',
+  cause: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  error: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  options: 
+   { uri: 'http://www.baidu.com',
+     callback: [Function: RP$callback],
+     transform: undefined,
+     simple: true,
+     resolveWithFullResponse: false,
+     transform2xxOnly: false },
+  response: undefined }
+[2018-07-09T17:33:11.292] [ERROR] cheese - { RequestError: Error: connect ETIMEDOUT 14.215.177.38:80
+    at new RequestError (F:\workspaces\jws2\node_modules\request-promise-core\lib\errors.js:14:15)
+    at Request.plumbing.callback (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:87:29)
+    at Request.RP$callback [as _callback] (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:46:31)
+    at self.callback (F:\workspaces\jws2\node_modules\request\request.js:185:22)
+    at emitOne (events.js:116:13)
+    at Request.emit (events.js:211:7)
+    at Request.onRequestError (F:\workspaces\jws2\node_modules\request\request.js:877:8)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+    at Socket.socketErrorListener (_http_client.js:387:9)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+From previous event:
+    at Request.plumbing.init (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:36:28)
+    at Request.RP$initInterceptor [as init] (F:\workspaces\jws2\node_modules\request-promise-core\configure\request2.js:41:27)
+    at new Request (F:\workspaces\jws2\node_modules\request\request.js:127:8)
+    at request (F:\workspaces\jws2\node_modules\request\index.js:53:10)
+    at UserService.getData (F:\workspaces\jws2\dist\services\UserService.js:32:41)
+    at TestRouter.getUser (F:\workspaces\jws2\dist\routers\TestRouter.js:58:47)
+    at memberInvoker (F:\workspaces\jws2\node_modules\awilix-koa\lib\invokers.js:80:45)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\workspaces\jws2\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:61:13)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:52:15)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at scopePerRequestMiddleware (F:\workspaces\jws2\node_modules\awilix-koa\lib\scope-per-request.js:13:16)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at Application.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:150:12)
+    at Server.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:132:19)
+  name: 'RequestError',
+  message: 'Error: connect ETIMEDOUT 14.215.177.38:80',
+  cause: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  error: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  options: 
+   { uri: 'http://www.baidu.com',
+     callback: [Function: RP$callback],
+     transform: undefined,
+     simple: true,
+     resolveWithFullResponse: false,
+     transform2xxOnly: false },
+  response: undefined }
+[2018-07-09T17:34:02.183] [ERROR] cheese - { RequestError: Error: connect ETIMEDOUT 14.215.177.38:80
+    at new RequestError (F:\workspaces\jws2\node_modules\request-promise-core\lib\errors.js:14:15)
+    at Request.plumbing.callback (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:87:29)
+    at Request.RP$callback [as _callback] (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:46:31)
+    at self.callback (F:\workspaces\jws2\node_modules\request\request.js:185:22)
+    at emitOne (events.js:116:13)
+    at Request.emit (events.js:211:7)
+    at Request.onRequestError (F:\workspaces\jws2\node_modules\request\request.js:877:8)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+    at Socket.socketErrorListener (_http_client.js:387:9)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+From previous event:
+    at Request.plumbing.init (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:36:28)
+    at Request.RP$initInterceptor [as init] (F:\workspaces\jws2\node_modules\request-promise-core\configure\request2.js:41:27)
+    at new Request (F:\workspaces\jws2\node_modules\request\request.js:127:8)
+    at request (F:\workspaces\jws2\node_modules\request\index.js:53:10)
+    at UserService.getData (F:\workspaces\jws2\dist\services\UserService.js:32:41)
+    at TestRouter.getUser (F:\workspaces\jws2\dist\routers\TestRouter.js:58:47)
+    at memberInvoker (F:\workspaces\jws2\node_modules\awilix-koa\lib\invokers.js:80:45)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\workspaces\jws2\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:61:13)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:52:15)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at scopePerRequestMiddleware (F:\workspaces\jws2\node_modules\awilix-koa\lib\scope-per-request.js:13:16)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at Application.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:150:12)
+    at Server.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:132:19)
+  name: 'RequestError',
+  message: 'Error: connect ETIMEDOUT 14.215.177.38:80',
+  cause: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  error: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  options: 
+   { uri: 'http://www.baidu.com',
+     callback: [Function: RP$callback],
+     transform: undefined,
+     simple: true,
+     resolveWithFullResponse: false,
+     transform2xxOnly: false },
+  response: undefined }
+[2018-07-09T17:34:11.760] [ERROR] cheese - { RequestError: Error: connect ETIMEDOUT 14.215.177.38:80
+    at new RequestError (F:\workspaces\jws2\node_modules\request-promise-core\lib\errors.js:14:15)
+    at Request.plumbing.callback (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:87:29)
+    at Request.RP$callback [as _callback] (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:46:31)
+    at self.callback (F:\workspaces\jws2\node_modules\request\request.js:185:22)
+    at emitOne (events.js:116:13)
+    at Request.emit (events.js:211:7)
+    at Request.onRequestError (F:\workspaces\jws2\node_modules\request\request.js:877:8)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+    at Socket.socketErrorListener (_http_client.js:387:9)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+From previous event:
+    at Request.plumbing.init (F:\workspaces\jws2\node_modules\request-promise-core\lib\plumbing.js:36:28)
+    at Request.RP$initInterceptor [as init] (F:\workspaces\jws2\node_modules\request-promise-core\configure\request2.js:41:27)
+    at new Request (F:\workspaces\jws2\node_modules\request\request.js:127:8)
+    at request (F:\workspaces\jws2\node_modules\request\index.js:53:10)
+    at UserService.getData (F:\workspaces\jws2\dist\services\UserService.js:32:41)
+    at TestRouter.getUser (F:\workspaces\jws2\dist\routers\TestRouter.js:58:47)
+    at memberInvoker (F:\workspaces\jws2\node_modules\awilix-koa\lib\invokers.js:80:45)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\workspaces\jws2\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\workspaces\jws2\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:61:13)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at app.use (F:\workspaces\jws2\dist\middlewares\errorhandler.js:52:15)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at scopePerRequestMiddleware (F:\workspaces\jws2\node_modules\awilix-koa\lib\scope-per-request.js:13:16)
+    at dispatch (F:\workspaces\jws2\node_modules\koa-compose\index.js:42:32)
+    at F:\workspaces\jws2\node_modules\koa-compose\index.js:34:12
+    at Application.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:150:12)
+    at Server.handleRequest (F:\workspaces\jws2\node_modules\koa\lib\application.js:132:19)
+  name: 'RequestError',
+  message: 'Error: connect ETIMEDOUT 14.215.177.38:80',
+  cause: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  error: 
+   { Error: connect ETIMEDOUT 14.215.177.38:80
+    at Object._errnoException (util.js:992:11)
+    at _exceptionWithHostPort (util.js:1014:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)
+     code: 'ETIMEDOUT',
+     errno: 'ETIMEDOUT',
+     syscall: 'connect',
+     address: '14.215.177.38',
+     port: 80 },
+  options: 
+   { uri: 'http://www.baidu.com',
+     callback: [Function: RP$callback],
+     transform: undefined,
+     simple: true,
+     resolveWithFullResponse: false,
+     transform2xxOnly: false },
+  response: undefined }

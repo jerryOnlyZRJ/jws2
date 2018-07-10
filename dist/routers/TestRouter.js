@@ -39,7 +39,10 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 }
 
 let TestRouter = (_dec = (0, _awilixKoa.route)('/test'), _dec2 = (0, _awilixKoa.GET)(), _dec3 = (0, _awilixKoa.route)("/:id"), _dec4 = (0, _awilixKoa.GET)(), _dec(_class = (_class2 = class TestRouter {
-    constructor({ testService, userService }) {
+    constructor({
+        testService,
+        userService
+    }) {
         this.testService = testService;
         this.userService = userService;
     }
@@ -55,11 +58,11 @@ let TestRouter = (_dec = (0, _awilixKoa.route)('/test'), _dec2 = (0, _awilixKoa.
     //增加子路由
 
     async getUser(ctx) {
-        const result = await this.userService.getData();
+        // const result = await this.userService.getData()
         const id = ctx.params.id;
         ctx.body = await ctx.render('index/pages/index', {
             name: id,
-            data: result
+            data: 'test sub route'
         });
     }
 }, (_applyDecoratedDescriptor(_class2.prototype, 'getTest', [_dec2], Object.getOwnPropertyDescriptor(_class2.prototype, 'getTest'), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, 'getUser', [_dec3, _dec4], Object.getOwnPropertyDescriptor(_class2.prototype, 'getUser'), _class2.prototype)), _class2)) || _class);

@@ -2,6 +2,7 @@
  * @description 容错机制中间件
  * @author Jerry
  */
+import path from 'path'
 import log4js from 'log4js'
 import CONFIG from '../config'
 
@@ -10,7 +11,7 @@ log4js.configure({
   appenders: {
     cheese: {
       type: 'file',
-      filename: './logs/jwslog.log'
+      filename: path.resolve(__dirname, '../logs/jwslog.log')
     }
   },
   // 错误类别配置

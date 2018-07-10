@@ -1,29 +1,42 @@
 'use strict';
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-var _ = _interopDefault(require('lodash'));
-var path = _interopDefault(require('path'));
+var _lodash = require('lodash');
 
-/**
- * @description node层配置文档
- * @author Jerry
- */
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  * node配置对象
  * @type {Object}
  */
+/**
+ * @description node层配置文档
+ * @author Jerry
+ */
 let CONFIG = {
-    'env': "production", //"development", "production"
-    'viewsPath': path.join(__dirname, '../views'),
-    'assetsPath': path.join(__dirname, '../assets')
+    'env': process.env.NODE_ENV, //"development", "production"
+    'viewsPath': _path2.default.join(__dirname, '../views'),
+    'assetsPath': _path2.default.join(__dirname, '../assets')
 };
-{
+if (process.env.NODE_ENV === "development") {
+    const localConfig = {
+        port: 8081
+    };
+    CONFIG = _lodash2.default.extend(CONFIG, localConfig);
+}
+if (process.env.NODE_ENV === "production") {
     const prodConfig = {
         port: 80
     };
-    CONFIG = _.extend(CONFIG, prodConfig);
+    CONFIG = _lodash2.default.extend(CONFIG, prodConfig);
 }
-var CONFIG$1 = CONFIG
-
-module.exports = CONFIG$1;
+exports.default = CONFIG;
