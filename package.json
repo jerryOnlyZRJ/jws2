@@ -20,6 +20,7 @@
     "dependencies": {
         "awilix": "^3.0.7",
         "awilix-koa": "^2.1.1",
+        "blueimp-md5": "^2.10.0",
         "cheerio": "^1.0.0-rc.2",
         "co": "^4.6.0",
         "cross-env": "^5.1.4",

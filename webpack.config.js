@@ -1,17 +1,18 @@
 const argv = require('yargs-parser')(process.argv.slice(2))
 const merge = require('webpack-merge')
 const glob = require('glob')
-const files = glob.sync('./src/client/views/**/*.entry.js')
+const entries = glob.sync('./src/client/views/**/*.entry.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const {
     join,
-    basename
+    basename,
+    resolve
 } = require('path')
 const htmlAfterWebpackPlugin = require('./config/htmlAfterWebpackPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const postcssPresetEnv = require('postcss-preset-env')
+// 代码压缩插件
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
@@ -19,12 +20,13 @@ const _mode = argv.mode || "development";
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
 let _entry = {}
 const fileReg = /\/(\w+-\w+)(\.entry\.js)$/
-for (let item of files) {
+for (let item of entries) {
     item.replace(fileReg, (match, $1) => {
         _entry[$1] = item
     })
 }
 let _localConfig = {
+    mode: _mode,
     entry: _entry,
     output: {
         path: join(__dirname, './dist/assets'),
@@ -39,23 +41,7 @@ let _localConfig = {
                 sourceMap: true // set to true if you want JS source maps
             }),
             new OptimizeCSSAssetsPlugin({})
-        ],
-        splitChunks: {
-            cacheGroups: {
-                vendor: { // 抽离第三方插件
-                    test: /node_modules/, // 指定是node_modules下的第三方包
-                    chunks: 'initial',
-                    name: 'common/vendor', // 打包后的文件名，任意命名    
-                    priority: 10 // 设置优先级，防止和自定义的公共代码提取时被覆盖，不进行打包
-                },
-                utils: { // 抽离自定义公共代码
-                    test: /\.js$/,
-                    chunks: 'initial',
-                    name: 'common/utils',
-                    minSize: 0 // 只要超出0字节就生成一个新包
-                }
-            }
-        }
+        ]
     },
     module: {
         rules: [{
@@ -70,12 +56,7 @@ let _localConfig = {
                 }, {
                     loader: 'postcss-loader',
                     options: {
-                        ident: 'postcss',
-                        plugins: () => [
-                            postcssPresetEnv({
-                                stage: 0
-                            })
-                        ]
+                        ident: 'postcss'
                     }
                 }
             ]
@@ -88,6 +69,12 @@ let _localConfig = {
                 }
             }]
         }]
+    },
+    resolve: {
+        extensions: [".js", ".css", ".vue"],
+        alias: {
+            '@': resolve('src')
+        }
     },
     plugins: [
         new CleanWebpackPlugin(['dist/assets/*', 'dist/views/*'], {
@@ -111,7 +98,7 @@ let _localConfig = {
             template: __dirname + '/src/client/views/index/pages/index.html',
             inject: false
         }),
-        new htmlAfterWebpackPlugin()
+        new htmlAfterWebpackPlugin(),
     ]
 }
 module.exports = merge(_localConfig, _mergeConfig)

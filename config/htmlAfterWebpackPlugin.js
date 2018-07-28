@@ -12,14 +12,19 @@ const assetsHelp = data => {
     for (let cssItem of data.css) {
         css.push(dir.css(cssItem))
     }
-    return { css, js }
+    return {
+        css,
+        js
+    }
 }
 class htmlAfterWebpackPlugin {
     apply(compiler) {
-        //html-webpack-plugin-before-html-processing
+        // html-webpack-plugin-before-html-processing
         compiler.hooks.compilation.tap(pluginName, compilation => {
-            // console.log("The webpack build process is starting!!!");
+            //监听pluginName，运行时触发，向回调注入compilation
+            // console.log('*****compilation*****', compilation)
             compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tap(pluginName, htmlPluginData => {
+                // console.log('*****htmlPluginData*****', htmlPluginData)
                 let _html = htmlPluginData.html
                 const result = assetsHelp(htmlPluginData.assets)
                 _html = _html.replace('<!--injectcss-->', result.css.join(''))
