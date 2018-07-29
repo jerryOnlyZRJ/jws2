@@ -1,14 +1,14 @@
+const {
+    join,
+    basename,
+    resolve
+} = require('path')
 const argv = require('yargs-parser')(process.argv.slice(2))
 const merge = require('webpack-merge')
 const glob = require('glob')
 const entries = glob.sync('./src/client/views/**/*.entry.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const {
-    join,
-    basename,
-    resolve
-} = require('path')
 const htmlAfterWebpackPlugin = require('./config/htmlAfterWebpackPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
