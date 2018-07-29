@@ -20,9 +20,9 @@ const assetsHelp = data => {
 
 // webpack4
 // 注册：
-// compiler.hooks.done.tap(‘mypluinname’,callback)
+// compiler.hooks.[somehooks].tap([yourPluginName],callback)
 // 触发：
-// compiler.hooks.done.call()
+// compiler.hooks.[somehooks].call()
 
 class htmlAfterWebpackPlugin {
     apply(compiler) {
@@ -45,8 +45,9 @@ class htmlAfterWebpackPlugin {
 
 // webpack3
 // 注册：
-// compiler.plugin(‘done’,callback)
-// compilitation.applyPlugins(‘done’,params)
+// compiler.plugin([somehooks],callback)
+// 触发：
+// compilitation.applyPlugins([somehooks],params)
 
 // class htmlAfterWebpackPlugin {
 //     apply(compiler) {
