@@ -15,6 +15,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 // 代码压缩插件
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
 //雪碧图配置
 const SpritesmithPlugin = require('webpack-spritesmith')
 //拿到存放雪碧图的所有文件夹
@@ -54,7 +55,7 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
             // 雪碧图里，图片和图片的距离，单位是px
             padding: 20
         },
-        //兼容视网膜屏
+        //自动适配视网膜二倍屏
         retina: '@2x'
         // {
         //   classifier: imagePath => {
