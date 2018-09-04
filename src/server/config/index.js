@@ -10,20 +10,20 @@ import path from 'path'
  * @type {Object}
  */
 let CONFIG = {
-    'env': process.env.NODE_ENV, //"development", "production"
-    'viewsPath': path.join(__dirname, '../views'),
-    'assetsPath': path.join(__dirname, '../assets')
+  'env': process.env.NODE_ENV, // "development", "production"
+  'viewsPath': path.join(__dirname, '../views'),
+  'assetsPath': path.join(__dirname, '../assets')
 }
-if (process.env.NODE_ENV === "development") {
-    const localConfig = {
-        port: 8081
-    }
-    CONFIG = _.extend(CONFIG, localConfig)
+if (process.env.NODE_ENV === 'development') {
+  const localConfig = {
+    port: 8081
+  }
+  CONFIG = _.extend(CONFIG, localConfig)
 }
-if (process.env.NODE_ENV === "production") {
-    const prodConfig = {
-        port: 80
-    }
-    CONFIG = _.extend(CONFIG, prodConfig)
+if (process.env.NODE_ENV === 'production') {
+  const prodConfig = {
+    port: 80
+  }
+  CONFIG = _.extend(CONFIG, prodConfig)
 }
 export default CONFIG

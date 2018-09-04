@@ -4,7 +4,6 @@
  */
 import path from 'path'
 import log4js from 'log4js'
-import CONFIG from '../config'
 
 log4js.configure({
   // log输出文件配置
@@ -33,7 +32,7 @@ const errorHandler = {
    * 错误处理句柄
    * @param  {Object} app koa2上下文
    */
-  error(app) {
+  error (app) {
     // 配合中间件迭代器进行容错处理
     app.use(async (ctx, next) => {
       try {

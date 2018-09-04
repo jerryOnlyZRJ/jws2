@@ -10,12 +10,9 @@ import cheerio from 'cheerio'
  * @type {Class}
  */
 class UserService {
-  constructor () {
-    
-  }
   /**
    * 数据拉取方法
-   * @return {Promise} 
+   * @return {Promise}
    */
   getData () {
     return request('http://www.baidu.com').then(data => {

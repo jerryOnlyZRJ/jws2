@@ -1,9 +1,6 @@
 class TestService {
-    constructor() {
-
-    }
-    find() {
-        return 'Hello IoC!'
-    }
+  find () {
+    return 'Hello IoC!'
+  }
 }
 export default TestService
