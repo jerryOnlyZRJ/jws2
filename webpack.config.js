@@ -33,7 +33,7 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
             cwd: resolve(spritesDir),
             // 匹配 png 文件，可以用glob语法，比如 '*.(png|jpg)' 这样
             // PS：png和jpg拼一起，有时候图片无法正常显示
-            glob: '*.png'
+            glob: '*.(png|jpg)'
         },
         // 输出雪碧图文件及样式文件
         target: {

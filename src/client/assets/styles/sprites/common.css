@@ -16,27 +16,7 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 // HTML
 <i class="icon icon-home"></i>
 */
-.icon-common-/Users/ranjayzheng/Desktop/workspace/jws2/src/client/assets/sprites/common/CircleLogoBlue16h {
-  background-image: url(../../images/sprites/common.png);
-  background-position: 0px 0px;
-  width: 16px;
-  height: 16px;
-}
-.icon-common-/Users/ranjayzheng/Desktop/workspace/jws2/src/client/assets/sprites/common/CircleLogoBlue48h {
-  background-image: url(../../images/sprites/common.png);
-  background-position: -36px 0px;
-  width: 48px;
-  height: 48px;
-}
 
 @media (-webkit-min-device-pixel-ratio: 2),
        (min-resolution: 192dpi) {
-  .icon-common-/Users/ranjayzheng/Desktop/workspace/jws2/src/client/assets/sprites/common/CircleLogoBlue16h {
-    background-image: url(../../images/sprites/common@2x.png);
-    background-size: 84px 48px;
-  }
-  .icon-common-/Users/ranjayzheng/Desktop/workspace/jws2/src/client/assets/sprites/common/CircleLogoBlue48h {
-    background-image: url(../../images/sprites/common@2x.png);
-    background-size: 84px 48px;
-  }
 }
