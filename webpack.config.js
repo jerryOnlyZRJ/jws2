@@ -40,7 +40,7 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
             css: resolve(`src/client/assets/styles/sprites/${dirName}.css`)
         },
         apiOptions: {
-            generateSpriteName: function() {
+            generateSpriteName: function () {
                 const fileName = arguments[0].match(/[^\\]+$/)[0].replace(/\.[a-zA-Z]+/, '')
                 // 雪碧图每个元素生成的类名：.icon-dirname-filename
                 // console.log(`icon-${dirName}-${fileName}`)
@@ -92,13 +92,29 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
 
 
 const _mode = argv.mode || "development";
+const _modeflag = (_mode == "production" ? true : false);
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
 let _entry = {}
+let _htmlPlugins = []
 const fileReg = /\/(\w+-\w+)(\.entry\.js)$/
 for (let item of entries) {
-    item.replace(fileReg, (match, $1) => {
-        _entry[$1] = item
-    })
+    if (fileReg.test(item)) {
+        const entrykey = RegExp.$1
+        _entry[entrykey] = item;
+        const [dist, template] = entrykey.split("-");
+        _htmlPlugins.push(new HtmlWebpackPlugin({
+            filename: `../views/${dist}/pages/${template}.html`,
+            template: `src/client/views/${dist}/pages/${template}.html`,
+            chunks: ["runtime", "common/vendor", "common/utils", entrykey],
+            minify: {
+                removeComments: true,
+                collapseWhitespace: _modeflag,
+                removeAttributeQuotes: _modeflag
+                // https://github.com/kangax/html-minifier#options-quick-reference
+            },
+            inject: false
+        }))
+    }
 }
 let _localConfig = {
     mode: _mode,
@@ -109,6 +125,7 @@ let _localConfig = {
         filename: "scripts/[name].bundle.js"
     },
     optimization: {
+        runtimeChunk: { name: 'runtime' },
         minimizer: [
             new UglifyJsPlugin({
                 cache: true,
@@ -119,11 +136,11 @@ let _localConfig = {
         ]
     },
     module: {
-        rules: [{
+        rules: [{ 
             test: /\.css$/,
             exclude: /node_modules/,
             use: [
-                _mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader, {
+                !_modeflag ? 'style-loader' : MiniCssExtractPlugin.loader, {
                     loader: 'css-loader',
                     options: {
                         importLoaders: 1
@@ -148,7 +165,7 @@ let _localConfig = {
     resolve: {
         extensions: [".js", ".css", ".vue"],
         alias: {
-            '@': resolve('src')
+            '@': resolve('src/client')
         }
     },
     plugins: [
@@ -167,13 +184,8 @@ let _localConfig = {
         }]),
         new MiniCssExtractPlugin({
             filename: 'styles/[name].[hash:5].css',
-            chunkFilename: 'styles/[id].[hash:5].css',
         }),
-        new HtmlWebpackPlugin({
-            filename: '../views/index/pages/index.html',
-            template: __dirname + '/src/client/views/index/pages/index.html',
-            inject: false
-        }),
+        ..._htmlPlugins,
         new htmlAfterWebpackPlugin(),
     ]
 }

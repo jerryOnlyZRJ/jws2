@@ -3,24 +3,8 @@
  * @author Jerry
  */
 import path from 'path'
-import log4js from 'log4js'
+import log4js from './log4js'
 
-log4js.configure({
-  // log输出文件配置
-  appenders: {
-    cheese: {
-      type: 'file',
-      filename: path.resolve(__dirname, '../logs/jwslog.log')
-    }
-  },
-  // 错误类别配置
-  categories: {
-    default: {
-      appenders: ['cheese'],
-      level: 'error'
-    }
-  }
-})
 const logger = log4js.getLogger('cheese')
 
 /**
