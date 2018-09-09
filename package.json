@@ -8,7 +8,7 @@
         "server:dev": "gulp",
         "server:prod": "cross-env NODE_ENV=production gulp",
         "server:lint": "cross-env NODE_ENV=lint gulp",
-        "client:dev": "webpack --mode development --module-bind js=babel-loader",
+        "client:dev": "webpack --mode development",
         "client:prod": "webpack --mode production --module-bind js=eslint-loader!babel-loader",
         "start": "node ./dist/app.js",
         "start:dev": "cross-env NODE_ENV=development node ./dist/app.js",
