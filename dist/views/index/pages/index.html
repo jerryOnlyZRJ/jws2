@@ -1,1 +1,10 @@
-{% extends '../../common/layout.html' %} {% block title %} Welcome [[ name ]] {% endblock%} {% block head %}{% endblock %} {% block styles %}<link rel=stylesheet href=/styles/index-index.2f1e6.css>{% endblock %} {% block content %} {% include '../../../widgets/topbanner/topbanner.html' %}<p>username: [[ name ]]</p><p>Welcome: [[ data ]]</p>{% include '../../../widgets/footer/footer.html' %} {% endblock %} {% block scripts %}<script src=/scripts/runtime.2f1e6.js></script><script src=/scripts/common/utils.2f1e6.js></script><script src=/scripts/index-index.2f1e6.js></script>{% endblock %}
+{% extends '../../common/layout.html' %}
+{% block title %} Welcome  [[ name ]] {% endblock%}
+{% block head %}{% endblock %}
+{% block styles %}{% endblock %}
+{% block content %}
+	{% include '../../../widgets/topbanner/topbanner.html' %}
+	<p> username: [[ name ]] </p><p> Welcome: [[ data ]] </p>
+	{% include '../../../widgets/footer/footer.html' %}
+{% endblock %}
+{% block scripts %}<script src="/scripts/runtime.bundle.js"></script><script src="/scripts/index-index.bundle.js"></script>{% endblock %}

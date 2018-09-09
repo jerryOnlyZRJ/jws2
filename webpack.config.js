@@ -15,6 +15,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 // 代码压缩插件
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+//happypack
+const HappyPack = require('happypack');
 
 //雪碧图配置
 const SpritesmithPlugin = require('webpack-spritesmith')
@@ -136,7 +138,11 @@ let _localConfig = {
         ]
     },
     module: {
-        rules: [{ 
+        rules: [{
+            test: /\.js|\.jsx$/,
+            exclude: /node_modules/,
+            use: 'happypack/loader?id=babel',
+        }, {
             test: /\.css$/,
             exclude: /node_modules/,
             use: [
@@ -169,6 +175,12 @@ let _localConfig = {
         }
     },
     plugins: [
+        new HappyPack({
+            id: 'babel',
+            loaders: [{
+                loader: 'babel-loader',
+            }]
+        }),
         ...spritesPlugins,
         new CleanWebpackPlugin(['dist/assets/*', 'dist/views/*'], {
             root: __dirname,
@@ -186,7 +198,7 @@ let _localConfig = {
             filename: 'styles/[name].[hash:5].css',
         }),
         ..._htmlPlugins,
-        new htmlAfterWebpackPlugin(),
+        new htmlAfterWebpackPlugin()
     ]
 }
 module.exports = merge(_localConfig, _mergeConfig)
