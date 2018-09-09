@@ -4,7 +4,7 @@
     "description": "Jerry's Web Scaffold",
     "main": "index.js",
     "scripts": {
-        "lint": "eslint src/**/**/*.js --fix",
+        "precommit": "lint-staged",
         "server:dev": "gulp",
         "server:prod": "cross-env NODE_ENV=production gulp",
         "server:lint": "cross-env NODE_ENV=lint gulp",
@@ -19,7 +19,7 @@
     "author": "920997736@qq.com",
     "license": "ISC",
     "lint-staged": {
-        "src/**/**/*.js": [
+        "src/*.js": [
             "prettier --write",
             "eslint --fix",
             "git add"
