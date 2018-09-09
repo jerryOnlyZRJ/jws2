@@ -19,7 +19,7 @@
     "author": "920997736@qq.com",
     "license": "ISC",
     "lint-staged": {
-        "src/*.js": [
+        "src/**/**/*.js": [
             "prettier --write",
             "eslint --fix",
             "git add"
