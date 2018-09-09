@@ -1,49 +1,27 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = void 0;
 
-var _path = require('path');
+var _path = _interopRequireDefault(require("path"));
 
-var _path2 = _interopRequireDefault(_path);
-
-var _log4js = require('log4js');
-
-var _log4js2 = _interopRequireDefault(_log4js);
-
-var _config = require('../config');
-
-var _config2 = _interopRequireDefault(_config);
+var _log4js = _interopRequireDefault(require("./log4js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_log4js2.default.configure({
-  // log输出文件配置
-  appenders: {
-    cheese: {
-      type: 'file',
-      filename: _path2.default.resolve(__dirname, '../logs/jwslog.log')
-    }
-  },
-  // 错误类别配置
-  categories: {
-    default: {
-      appenders: ['cheese'],
-      level: 'error'
-    }
-  }
-}); /**
-     * @description 容错机制中间件
-     * @author Jerry
-     */
-
-const logger = _log4js2.default.getLogger('cheese');
-
+/**
+ * @description 容错机制中间件
+ * @author Jerry
+ */
+const logger = _log4js.default.getLogger('cheese');
 /**
  * 容错处理对象
  * @type {Object}
  */
+
+
 const errorHandler = {
   /**
    * 错误处理句柄
@@ -68,5 +46,7 @@ const errorHandler = {
       ctx.body = await ctx.render('common/404');
     });
   }
+
 };
-exports.default = errorHandler;
+var _default = errorHandler;
+exports.default = _default;

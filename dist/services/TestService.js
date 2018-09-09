@@ -1,12 +1,16 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-let TestService = class TestService {
-    constructor() {}
-    find() {
-        return 'Hello IoC!';
-    }
-};
-exports.default = TestService;
+exports.default = void 0;
+
+class TestService {
+  find() {
+    return 'Hello IoC!';
+  }
+
+}
+
+var _default = TestService;
+exports.default = _default;
