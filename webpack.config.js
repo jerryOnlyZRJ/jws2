@@ -22,7 +22,7 @@ const SpritesmithPlugin = require('webpack-spritesmith')
 //拿到存放雪碧图的所有文件夹
 const spritesDirs = glob.sync('./src/client/assets/sprites/*')
 const spritesPlugins = spritesDirs.map(spritesDir => {
-    //拿到单个文件夹名称
+    //拿到单个文件夹名称 basename('./src/client/assets/sprites/common')
     let dirName = basename(spritesDir)
     return new SpritesmithPlugin({
         src: {
@@ -30,7 +30,7 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
             cwd: resolve(__dirname, spritesDir),
             // 匹配 png 文件，可以用glob语法，比如 '*.(png|jpg)' 这样
             // PS：png和jpg拼一起，有时候图片无法正常显示
-            glob: '*.(png|jpg)'
+            glob: '*.png'
         },
         // 输出雪碧图文件及样式文件
         target: {
