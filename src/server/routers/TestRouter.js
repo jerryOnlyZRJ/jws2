@@ -30,9 +30,9 @@ class TestRouter {
 
   @route("/testpost")
   @POST()
-  testPost(ctx) {
+  async testPost(ctx) {
     let options = ctx.request.body;
-    ctx.body = options;
+    ctx.body = await options;
   }
 }
 

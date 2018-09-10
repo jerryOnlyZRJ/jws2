@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "precommit": "lint-staged",
+        "build": "npm run server:prod && npm run client:prod",
         "server:dev": "gulp",
         "server:prod": "cross-env NODE_ENV=production gulp",
         "server:lint": "cross-env NODE_ENV=lint gulp",
