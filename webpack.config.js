@@ -148,7 +148,7 @@ let _localConfig = {
                 }
             ]
         }, {
-            test: /\.(png|jpg|gif)$/,
+            test: /\.(png|jpg|gif|eot|woff|woff2|ttf|svg|otf)$/,
             use: [{
                 loader: 'file-loader',
                 options: {
@@ -187,6 +187,9 @@ let _localConfig = {
         }, {
             from: 'src/client/views/common/404.html',
             to: '../views/common/404.html'
+        }, {
+            from: 'src/client/widgets/',
+            to: '../widgets'
         }]),
         new MiniCssExtractPlugin({
             filename: 'styles/[name].[hash:5].css',
