@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _path = _interopRequireDefault(require("path"));
-
 var _koa = _interopRequireDefault(require("koa"));
 
 var _koaBodyparser = _interopRequireDefault(require("koa-bodyparser"));
@@ -32,8 +30,8 @@ const app = new _koa.default(); //  解析POST请求请求体
 app.use((0, _koaBodyparser.default)());
 const container = (0, _awilix.createContainer)();
 app.use((0, _awilixKoa.scopePerRequest)(container));
-container.loadModules([__dirname + '/services/*.js'], {
-  formatName: 'camelCase',
+container.loadModules([__dirname + "/services/*.js"], {
+  formatName: "camelCase",
   resolverOptions: {
     lifetime: _awilix.Lifetime.SCOPED
   }
@@ -42,7 +40,7 @@ container.loadModules([__dirname + '/services/*.js'], {
 _errorhandler.default.error(app); //  注册路由
 
 
-app.use((0, _awilixKoa.loadControllers)(__dirname + '/routers/*.js', {
+app.use((0, _awilixKoa.loadControllers)(__dirname + "/routers/*.js", {
   cwd: __dirname
 }));
 const CONFIG = (0, _config.default)(app);
@@ -51,14 +49,15 @@ app.context.render = _co.default.wrap((0, _koaSwig.default)({
   root: CONFIG.viewsPath,
   autoescape: true,
   //  自定义模板匹配
-  varControls: ['[[', ']]'],
+  varControls: ["[[", "]]"],
   //   disable, set to false (配置缓存)
-  cache: 'memory',
+  cache: "memory",
   //   匹配模版类型
-  ext: 'html',
+  ext: "html",
   writeBody: false
 }));
 app.listen(CONFIG.port, () => {
+  // eslint-disable-next-line
   console.log(`website is starting at port ${CONFIG.port}`);
 });
 var _default = app;

@@ -9,7 +9,7 @@ import { Lifetime, createContainer } from "awilix";
 import { loadControllers, scopePerRequest } from "awilix-koa";
 
 const app = new Koa();
-//  解析POST请求请求体
+//  解析POST请求请求体并自动挂载在ctx.request.body上
 app.use(bodyParser());
 const container = createContainer();
 app.use(scopePerRequest(container));

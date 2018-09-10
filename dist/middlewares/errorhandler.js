@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _path = _interopRequireDefault(require("path"));
-
 var _log4js = _interopRequireDefault(require("./log4js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -15,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @description 容错机制中间件
  * @author Jerry
  */
-const logger = _log4js.default.getLogger('cheese');
+const logger = _log4js.default.getLogger("cheese");
 /**
  * 容错处理对象
  * @type {Object}
@@ -43,7 +41,7 @@ const errorHandler = {
       await next();
       if (ctx.status !== 404) return;
       ctx.status = 404;
-      ctx.body = await ctx.render('common/404');
+      ctx.body = await ctx.render("common/404");
     });
   }
 

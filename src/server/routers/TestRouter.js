@@ -1,4 +1,4 @@
-import { route, GET } from "awilix-koa";
+import { route, GET, POST } from "awilix-koa";
 
 @route("/test")
 class TestRouter {
@@ -26,6 +26,13 @@ class TestRouter {
       name: id,
       data: "test sub route"
     });
+  }
+
+  @route("/testpost")
+  @POST()
+  testPost(ctx) {
+    let options = ctx.request.body;
+    ctx.body = options;
   }
 }
 
