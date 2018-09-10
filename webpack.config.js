@@ -9,12 +9,9 @@ const glob = require('glob')
 const entries = glob.sync('./src/client/views/**/*.entry.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const htmlAfterWebpackPlugin = require('./config/htmlAfterWebpackPlugin')
+const htmlAfterWebpackPlugin = require('./config/webpackPlugins/htmlAfterWebpackPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-// 代码压缩插件
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // 图片压缩插件
 var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
 //happypack
@@ -129,17 +126,6 @@ let _localConfig = {
         publicPath: '/',
         filename: "scripts/[name].bundle.js"
     },
-    optimization: {
-        runtimeChunk: { name: 'runtime' },
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true // set to true if you want JS source maps
-            }),
-            new OptimizeCSSAssetsPlugin({})
-        ]
-    },
     module: {
         rules: [{
             test: /\.js|\.jsx$/,
@@ -152,7 +138,7 @@ let _localConfig = {
                 !_modeflag ? 'style-loader' : MiniCssExtractPlugin.loader, {
                     loader: 'css-loader',
                     options: {
-                        importLoaders: 1
+                        importLoaders: 1,
                     }
                 }, {
                     loader: 'postcss-loader',

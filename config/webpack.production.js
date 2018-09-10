@@ -1,3 +1,7 @@
+// 代码压缩插件
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
 module.exports = {
   output: {
     filename: 'scripts/[name].[hash:5].js'
@@ -18,6 +22,16 @@ module.exports = {
           minSize: 0 // 只要超出0字节就生成一个新包
         }
       }
-    }
+    },
+    runtimeChunk: { name: 'runtime' },
+        // js,css资源压缩
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true // set to true if you want JS source maps
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ]
   }
 }
