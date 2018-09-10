@@ -11,7 +11,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const htmlAfterWebpackPlugin = require('./config/webpackPlugins/htmlAfterWebpackPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 // 图片压缩插件
 var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
 //happypack
@@ -28,7 +27,7 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
     return new SpritesmithPlugin({
         src: {
             // 图片所在文件夹（无视子文件夹）
-            cwd: resolve(spritesDir),
+            cwd: resolve(__dirname, spritesDir),
             // 匹配 png 文件，可以用glob语法，比如 '*.(png|jpg)' 这样
             // PS：png和jpg拼一起，有时候图片无法正常显示
             glob: '*.(png|jpg)'
@@ -37,9 +36,9 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
         target: {
             // 将其输出到 src/assets 目录下
             // 这个是打包前的目录，所以不要学某个教程将其输出到 dist 目录下
-            image: resolve(`src/client/assets/images/sprites/${dirName}.png`),
+            image: resolve(__dirname, `src/client/assets/images/sprites/${dirName}.png`),
             // 可以是字符串、或者数组
-            css: resolve(`src/client/assets/styles/sprites/${dirName}.css`)
+            css: resolve(__dirname, `src/client/assets/styles/sprites/${dirName}.css`)
         },
         apiOptions: {
             generateSpriteName: function () {
@@ -181,16 +180,6 @@ let _localConfig = {
             verbose: true,
             dry: false
         }),
-        new CopyWebpackPlugin([{
-            from: 'src/client/views/common/layout.html',
-            to: '../views/common/layout.html'
-        }, {
-            from: 'src/client/views/common/404.html',
-            to: '../views/common/404.html'
-        }, {
-            from: 'src/client/widgets/',
-            to: '../widgets'
-        }]),
         new MiniCssExtractPlugin({
             filename: 'styles/[name].[hash:5].css',
         }),

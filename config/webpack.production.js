@@ -1,6 +1,8 @@
 // 代码压缩插件
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const { minify } = require('html-minifier')
 
 module.exports = {
   output: {
@@ -24,14 +26,34 @@ module.exports = {
       }
     },
     runtimeChunk: { name: 'runtime' },
-        // js,css资源压缩
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true // set to true if you want JS source maps
-            }),
-            new OptimizeCSSAssetsPlugin({})
-        ]
-  }
+    // js,css资源压缩
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
+  plugins: [
+    new CopyWebpackPlugin([{
+      from: 'src/client/views/common/layout.html',
+      to: '../views/common/layout.html'
+    }, {
+      from: 'src/client/views/common/404.html',
+      to: '../views/common/404.html'
+    }, {
+      from: 'src/client/widgets/',
+      to: '../widgets',
+      transform(content, path) {
+        return minify(content.toString('utf-8'), {
+          // 去空格
+          collapseWhitespace: true
+        });
+      }
+    }], {
+        ignore: ['*.js', '*.css'],
+      }),
+  ]
 }

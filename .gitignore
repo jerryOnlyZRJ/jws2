@@ -6,3 +6,6 @@ logs/
 
 #test coverage
 docs/coverage
+
+#MAC
+.DS_Store
