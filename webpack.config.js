@@ -42,7 +42,9 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
         },
         apiOptions: {
             generateSpriteName: function () {
-                const fileName = arguments[0].match(/[^\\]+$/)[0].replace(/\.[a-zA-Z]+/, '')
+                const imagePath = arguments[0]
+                const basenameIndex = imagePath.lastIndexOf('\\') >= 0 ? imagePath.lastIndexOf('\\')  : imagePath.lastIndexOf('\/')
+                const fileName = imagePath.substr(basenameIndex + 1, imagePath.length)
                 // 雪碧图每个元素生成的类名：.icon-dirname-filename
                 // console.log(`icon-${dirName}-${fileName}`)
                 return `${dirName}-${fileName}`
