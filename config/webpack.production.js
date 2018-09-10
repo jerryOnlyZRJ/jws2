@@ -2,6 +2,7 @@
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// 优化html，自动压缩并修复缺失标签
 const { minify } = require('html-minifier')
 
 module.exports = {

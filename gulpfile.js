@@ -3,9 +3,7 @@ const pump = require('pump')
 const babel = require('gulp-babel')
 const rollup = require('gulp-rollup')
 const replace = require('rollup-plugin-replace')
-const sourcemaps = require('gulp-sourcemaps')
 const eslint = require('gulp-eslint');
-const gulpSequence = require('gulp-sequence')
 
 gulp.task('builddev', cb => {
   pump([
@@ -52,7 +50,9 @@ gulp.task('buildprod', cb => {
         })
       ]
     }),
+    //复制上线配置文件
     gulp.src('./src/server/pm2.json'),
+    gulp.src('package.json'),
     gulp.dest('dist')
   ],
     cb
