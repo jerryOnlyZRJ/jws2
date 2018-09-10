@@ -61,7 +61,7 @@ gulp.task('buildprod', cb => {
 
 gulp.task('lint', cb => {
   pump([
-    gulp.src('./src/nodeuii/**/*.js'),
+    gulp.src('./src/server/**/*.js'),
     eslint(),
     eslint.format(),
     eslint.failAfterError()

@@ -2,10 +2,9 @@
  * @description 容错机制中间件
  * @author Jerry
  */
-import path from 'path'
-import log4js from './log4js'
+import log4js from "./log4js";
 
-const logger = log4js.getLogger('cheese')
+const logger = log4js.getLogger("cheese");
 
 /**
  * 容错处理对象
@@ -16,24 +15,24 @@ const errorHandler = {
    * 错误处理句柄
    * @param  {Object} app koa2上下文
    */
-  error (app) {
+  error(app) {
     // 配合中间件迭代器进行容错处理
     app.use(async (ctx, next) => {
       try {
-        await next()
+        await next();
       } catch (err) {
         // node错误日志
-        logger.error(err)
-        ctx.status = err.status || 500
-        ctx.body = 500
+        logger.error(err);
+        ctx.status = err.status || 500;
+        ctx.body = 500;
       }
-    })
+    });
     app.use(async (ctx, next) => {
-      await next()
-      if (ctx.status !== 404) return
-      ctx.status = 404
-      ctx.body = await ctx.render('common/404')
-    })
+      await next();
+      if (ctx.status !== 404) return;
+      ctx.status = 404;
+      ctx.body = await ctx.render("common/404");
+    });
   }
-}
-export default errorHandler
+};
+export default errorHandler;

@@ -18,12 +18,17 @@ let CONFIG = {
   'viewsPath': path.join(__dirname, '../views'),
   'assetsPath': path.join(__dirname, '../assets')
 };
-{
-  const prodConfig = {
-    port: 80
-  };
-  CONFIG = _.extend(CONFIG, prodConfig);
-}
-var CONFIG$1 = CONFIG
 
-module.exports = CONFIG$1;
+const init = app => {
+  {
+    const prodConfig = {
+      port: 80
+    };
+    CONFIG = _.extend(CONFIG, prodConfig);
+  }
+  return CONFIG
+};
+
+var index = app => init(app)
+
+module.exports = index;

@@ -45,9 +45,10 @@ _errorhandler.default.error(app); //  注册路由
 app.use((0, _awilixKoa.loadControllers)(__dirname + '/routers/*.js', {
   cwd: __dirname
 }));
-app.use((0, _koaStatic.default)(_config.default.assetsPath));
+const CONFIG = (0, _config.default)(app);
+app.use((0, _koaStatic.default)(CONFIG.assetsPath));
 app.context.render = _co.default.wrap((0, _koaSwig.default)({
-  root: _config.default.viewsPath,
+  root: CONFIG.viewsPath,
   autoescape: true,
   //  自定义模板匹配
   varControls: ['[[', ']]'],
@@ -57,8 +58,8 @@ app.context.render = _co.default.wrap((0, _koaSwig.default)({
   ext: 'html',
   writeBody: false
 }));
-app.listen(_config.default.port, () => {
-  console.log(`website is starting at port ${_config.default.port}`);
+app.listen(CONFIG.port, () => {
+  console.log(`website is starting at port ${CONFIG.port}`);
 });
 var _default = app;
 exports.default = _default;
