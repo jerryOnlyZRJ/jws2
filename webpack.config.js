@@ -19,6 +19,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
 //happypack
 const HappyPack = require('happypack');
+// const happypackConfig = require('./config/happypack.js')
 
 //雪碧图配置
 const SpritesmithPlugin = require('webpack-spritesmith')
@@ -208,4 +209,5 @@ let _localConfig = {
         new htmlAfterWebpackPlugin()
     ]
 }
+// module.exports = merge(_localConfig, _mergeConfig, happypackConfig)
 module.exports = merge(_localConfig, _mergeConfig)
