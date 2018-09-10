@@ -44,7 +44,7 @@ gulp.task('buildprod', cb => {
       input: ['src/server/config/index.js'],
       plugins: [
         // 替换rollup文件中的字符串
-        // rollup不会读取变量中的值，只能显式替换字符串
+        // rollup不会读取变量中的值，只能显式替换字符串，告诉rollup这个branch是死的
         replace({
           'process.env.NODE_ENV': JSON.stringify('production')
         })

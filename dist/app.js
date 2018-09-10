@@ -25,7 +25,7 @@ var _awilixKoa = require("awilix-koa");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const app = new _koa.default(); //  解析POST请求请求体
+const app = new _koa.default(); //  解析POST请求请求体并自动挂载在ctx.request.body上
 
 app.use((0, _koaBodyparser.default)());
 const container = (0, _awilix.createContainer)();

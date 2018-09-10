@@ -12,7 +12,7 @@
         "client:dev": "webpack --mode development",
         "client:prod": "webpack --mode production --module-bind js=eslint-loader!babel-loader",
         "start": "pm2 start pm2.json",
-        "start:dev": "cross-env NODE_ENV=development node ./dist/app.js",
+        "start:dev": "supervisor ./dist/app.js",
         "test": "jest --coverage --forceExit",
         "test:e2e": "node ./tests/e2e.js",
         "docs": "jsdoc ./src/server/**/*.js -d ./docs/jsdocs"
@@ -75,7 +75,6 @@
         "husky": "^0.15.0-rc.13",
         "jest": "^22.4.3",
         "jsdoc": "^3.5.5",
-        "koa-webpack-middleware": "^1.0.7",
         "lint-staged": "^7.2.2",
         "mini-css-extract-plugin": "^0.4.1",
         "optimize-css-assets-webpack-plugin": "^4.0.3",

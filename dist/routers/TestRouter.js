@@ -38,9 +38,9 @@ let TestRouter = (_dec = (0, _awilixKoa.route)("/test"), _dec2 = (0, _awilixKoa.
     });
   }
 
-  testPost(ctx) {
+  async testPost(ctx) {
     let options = ctx.request.body;
-    ctx.body = options;
+    ctx.body = await options;
   }
 
 }, (_applyDecoratedDescriptor(_class2.prototype, "getTest", [_dec2], Object.getOwnPropertyDescriptor(_class2.prototype, "getTest"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "getUser", [_dec3, _dec4], Object.getOwnPropertyDescriptor(_class2.prototype, "getUser"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "testPost", [_dec5, _dec6], Object.getOwnPropertyDescriptor(_class2.prototype, "testPost"), _class2.prototype)), _class2)) || _class);
