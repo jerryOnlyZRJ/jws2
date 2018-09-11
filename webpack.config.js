@@ -3,19 +3,20 @@ const {
     basename,
     resolve
 } = require('path')
+const globProjectConfig = require('./config/projectConfig.js')
 const argv = require('yargs-parser')(process.argv.slice(2))
 const merge = require('webpack-merge')
 const glob = require('glob')
 const entries = glob.sync('./src/client/views/**/*.entry.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const htmlAfterWebpackPlugin = require('./config/webpackPlugins/htmlAfterWebpackPlugin')
+const htmlAfterWebpackPlugin = require('./build/webpackPlugins/htmlAfterWebpackPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 图片压缩插件
 var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
 //happypack
 const HappyPack = require('happypack');
-// const happypackConfig = require('./config/happypack.js')
+// const happypackConfig = require('./build/happypack.js')
 
 //雪碧图配置
 const SpritesmithPlugin = require('webpack-spritesmith')
@@ -41,9 +42,10 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
             css: resolve(__dirname, `src/client/assets/styles/sprites/${dirName}.css`)
         },
         apiOptions: {
+            // 生成iconfont class名称
             generateSpriteName: function () {
                 const imagePath = arguments[0]
-                const basenameIndex = imagePath.lastIndexOf('\\') >= 0 ? imagePath.lastIndexOf('\\')  : imagePath.lastIndexOf('\/')
+                const basenameIndex = imagePath.lastIndexOf('\\') >= 0 ? imagePath.lastIndexOf('\\') : imagePath.lastIndexOf('\/')
                 const fileName = imagePath.substr(basenameIndex + 1, imagePath.length)
                 // 雪碧图每个元素生成的类名：.icon-dirname-filename
                 // console.log(`icon-${dirName}-${fileName}`)
@@ -96,7 +98,7 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
 
 const _mode = argv.mode || "development";
 const _modeflag = (_mode == "production" ? true : false);
-const _mergeConfig = require(`./config/webpack.${_mode}.js`);
+const _mergeConfig = require(`./build/webpack.${_mode}.js`);
 let _entry = {}
 let _htmlPlugins = []
 const fileReg = /\/(\w+-\w+)(\.entry\.js)$/
@@ -124,7 +126,7 @@ let _localConfig = {
     entry: _entry,
     output: {
         path: join(__dirname, './dist/assets'),
-        publicPath: '/',
+        publicPath: globProjectConfig.publicPath,
         filename: "scripts/[name].bundle.js"
     },
     module: {
@@ -172,7 +174,7 @@ let _localConfig = {
             }]
         }),
         new tinyPngWebpackPlugin({
-            key:"KsylMrS0tgwrmpc93OCkW2CRwdtLTNal", //can be Array, eg:['your key 1','your key 2'....]
+            key: globProjectConfig.tinyPngPrivateKey, //can be Array, eg:['your key 1','your key 2'....]
             ext: ['png', 'jpeg', 'jpg'],    //img ext name
             // proxy:'http://user:pass@192.168.0.1:8080' //http proxy,eg:如果你来自中国，同时拥有shadowsocks，翻墙默认配置为 http:127.0.0.1:1080 即可。（注，该参数因为需要超时断开连接的原因，导致最后会延迟执行一会webpack。但相对于国内网络环境，用此参数还是非常划算的，测试原有两张图片，无此参数耗时2000ms+，有此参数耗时1000ms+节约近半。）
         }),

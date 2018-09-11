@@ -39,6 +39,7 @@ gulp.task('buildprod', cb => {
     // 清洗config
     rollup({
       output: {
+        //CommonJS
         format: 'cjs'
       },
       input: ['src/server/config/index.js'],
