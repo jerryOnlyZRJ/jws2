@@ -14,9 +14,38 @@ const htmlAfterWebpackPlugin = require('./build/webpackPlugins/htmlAfterWebpackP
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 图片压缩插件
 var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
-//happypack
+
 const HappyPack = require('happypack');
+//使用自定义happypack配置
 // const happypackConfig = require('./build/happypack.js')
+
+// 生成多页entry及htmlplugin
+const _mode = argv.mode || "development";
+const _modeflag = (_mode == "production" ? true : false);
+const _mergeConfig = require(`./build/webpack.${_mode}.js`);
+let _entry = {}
+let _htmlPlugins = []
+const fileReg = /\/(\w+-\w+)(\.entry\.js)$/
+for (let item of entries) {
+    if (fileReg.test(item)) {
+        const entrykey = RegExp.$1
+        _entry[entrykey] = item;
+        const [dist, template] = entrykey.split("-");
+        _htmlPlugins.push(new HtmlWebpackPlugin({
+            filename: `../views/${dist}/pages/${template}.html`,
+            template: `src/client/views/${dist}/pages/${template}.html`,
+            chunks: ["runtime", "common/vendor", "common/utils", entrykey],
+            minify: {
+                removeComments: true,
+                collapseWhitespace: _modeflag,
+                removeAttributeQuotes: _modeflag
+                // https://github.com/kangax/html-minifier#options-quick-reference
+            },
+            inject: false
+        }))
+    }
+}
+
 
 //雪碧图配置
 const SpritesmithPlugin = require('webpack-spritesmith')
@@ -95,32 +124,7 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
     })
 })
 
-
-const _mode = argv.mode || "development";
-const _modeflag = (_mode == "production" ? true : false);
-const _mergeConfig = require(`./build/webpack.${_mode}.js`);
-let _entry = {}
-let _htmlPlugins = []
-const fileReg = /\/(\w+-\w+)(\.entry\.js)$/
-for (let item of entries) {
-    if (fileReg.test(item)) {
-        const entrykey = RegExp.$1
-        _entry[entrykey] = item;
-        const [dist, template] = entrykey.split("-");
-        _htmlPlugins.push(new HtmlWebpackPlugin({
-            filename: `../views/${dist}/pages/${template}.html`,
-            template: `src/client/views/${dist}/pages/${template}.html`,
-            chunks: ["runtime", "common/vendor", "common/utils", entrykey],
-            minify: {
-                removeComments: true,
-                collapseWhitespace: _modeflag,
-                removeAttributeQuotes: _modeflag
-                // https://github.com/kangax/html-minifier#options-quick-reference
-            },
-            inject: false
-        }))
-    }
-}
+// 全局配置
 let _localConfig = {
     mode: _mode,
     entry: _entry,
@@ -133,10 +137,12 @@ let _localConfig = {
         rules: [{
             test: /\.js|\.jsx$/,
             exclude: /node_modules/,
+            // id与plugins中的插件实例相关联
             use: 'happypack/loader?id=babel',
         }, {
             test: /\.css$/,
             exclude: /node_modules/,
+            // loader的执行顺序与声明时是相反的，从后往前
             use: [
                 !_modeflag ? 'style-loader' : MiniCssExtractPlugin.loader, {
                     loader: 'css-loader',
