@@ -50,4 +50,5 @@ app.listen(CONFIG.port, () => {
   console.log(`website is starting at port ${CONFIG.port}`);
 });
 
+//到处app供API集成测试使用
 export default app;

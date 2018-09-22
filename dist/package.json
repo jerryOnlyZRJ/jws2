@@ -6,13 +6,13 @@
     "scripts": {
         "precommit": "lint-staged",
         "build": "npm run server:prod && npm run client:prod",
+        "start": "pm2 start pm2.json",
+        "start:dev": "supervisor ./dist/app.js",
         "server:dev": "gulp",
         "server:prod": "cross-env NODE_ENV=production gulp",
         "server:lint": "cross-env NODE_ENV=lint gulp",
         "client:dev": "webpack --mode development",
         "client:prod": "webpack --mode production --module-bind js=eslint-loader!babel-loader",
-        "start": "pm2 start pm2.json",
-        "start:dev": "supervisor ./dist/app.js",
         "test": "jest --coverage --forceExit",
         "test:e2e": "node ./tests/e2e.js",
         "docs": "jsdoc ./src/server/**/*.js -d ./docs/jsdocs"
@@ -88,6 +88,7 @@
         "selenium-webdriver": "^4.0.0-alpha.1",
         "style-loader": "^0.21.0",
         "supertest": "^3.0.0",
+        "supervisor": "^0.12.0",
         "tinypng-webpack-plugin": "^2.0.0",
         "uglifyjs-webpack-plugin": "^1.2.7",
         "webpack": "^4.14.0",

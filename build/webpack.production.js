@@ -26,7 +26,7 @@ module.exports = {
         }
       }
     },
-    runtimeChunk: { name: 'runtime' },
+    runtimeChunk: { name: 'common/runtime' },
     // js,css资源压缩
     minimizer: [
       new UglifyJsPlugin({

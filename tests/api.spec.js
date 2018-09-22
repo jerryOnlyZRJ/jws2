@@ -1,5 +1,5 @@
 // node api测试
-const app = require('../build/app.js').default
+const app = require('../dist/app.js').default
 const request = require('supertest')
 
 describe('test app.js', () => {

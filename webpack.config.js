@@ -34,7 +34,7 @@ for (let item of entries) {
         _htmlPlugins.push(new HtmlWebpackPlugin({
             filename: `../views/${dist}/pages/${template}.html`,
             template: `src/client/views/${dist}/pages/${template}.html`,
-            chunks: ["runtime", "common/vendor", "common/utils", entrykey],
+            chunks: ["common/runtime", "common/vendor", "common/utils", entrykey],
             minify: {
                 removeComments: true,
                 collapseWhitespace: _modeflag,
