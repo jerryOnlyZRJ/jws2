@@ -4,6 +4,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // 优化html，自动压缩并修复缺失标签
 const { minify } = require('html-minifier')
+// webapck深度tree-shaking
+const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 
 module.exports = {
   output: {
@@ -38,6 +40,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new WebpackDeepScopeAnalysisPlugin(),
     new CopyWebpackPlugin([{
       from: 'src/client/views/common/layout.html',
       to: '../views/common/layout.html'
