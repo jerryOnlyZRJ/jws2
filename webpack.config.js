@@ -48,6 +48,10 @@ for (let item of entries) {
     }
 }
 
+// iterm2彩蛋
+const setIterm2Badge = require('set-iterm2-badge');
+const port = 'Ranjay build client...';
+setIterm2Badge(port);
 
 //雪碧图配置
 const SpritesmithPlugin = require('webpack-spritesmith')
