@@ -14,6 +14,8 @@ const htmlAfterWebpackPlugin = require('./build/webpackPlugins/htmlAfterWebpackP
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 图片压缩插件
 var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
+// CSS tree-shaking
+// const PurifyCSSPlugin = require('purifycss-webpack');
 
 const HappyPack = require('happypack');
 //使用自定义happypack配置
@@ -148,6 +150,9 @@ let _localConfig = {
                     loader: 'css-loader',
                     options: {
                         importLoaders: 1,
+                        // modules: true,
+                        // name:文件名；local:类名；
+                        // localIdentName: '[name]__[local]--[hash:base64:5]'
                     }
                 }, {
                     loader: 'postcss-loader',
@@ -193,6 +198,11 @@ let _localConfig = {
         new MiniCssExtractPlugin({
             filename: 'styles/[name].[hash:5].css',
         }),
+        // CSS tree-shaking
+        // new PurifyCSSPlugin({
+        //     // Give paths to parse for rules. These should be absolute!
+        //     paths: glob.sync(path.join(__dirname, 'dist/views/*.html')),
+        // }),
         ..._htmlPlugins,
         new htmlAfterWebpackPlugin()
     ]
