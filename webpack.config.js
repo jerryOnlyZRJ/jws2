@@ -14,8 +14,15 @@ const htmlAfterWebpackPlugin = require('./build/webpackPlugins/htmlAfterWebpackP
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 图片压缩插件
 var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
+
 // CSS tree-shaking
 // const PurifyCSSPlugin = require('purifycss-webpack');
+
+// webpack构建性能监控
+// const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+// const smp = new SpeedMeasurePlugin();
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const HappyPack = require('happypack');
 //使用自定义happypack配置
@@ -182,6 +189,12 @@ let _localConfig = {
         }
     },
     plugins: [
+        new WebpackBuildNotifierPlugin({
+            title: "My Project Webpack Build",
+            // logo: path.resolve("./img/favicon.png"),
+            suppressSuccess: true
+        }),
+        new ProgressBarPlugin(),
         new HappyPack({
             id: 'babel',
             loaders: [{
@@ -208,8 +221,11 @@ let _localConfig = {
         //     paths: glob.sync(path.join(__dirname, 'dist/views/*.html')),
         // }),
         ..._htmlPlugins,
-        new htmlAfterWebpackPlugin()
+        new htmlAfterWebpackPlugin(),
     ]
 }
-// module.exports = merge(_localConfig, _mergeConfig, happypackConfig)
-module.exports = merge(_localConfig, _mergeConfig)
+
+const webpackConfig = merge(_localConfig, _mergeConfig)
+// const webpackConfig = smp.wrap(merge(_localConfig, _mergeConfig))
+
+module.exports = webpackConfig

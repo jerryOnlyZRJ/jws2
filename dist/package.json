@@ -4,7 +4,6 @@
     "description": "Jerry's Web Scaffold",
     "main": "index.js",
     "scripts": {
-        "precommit": "lint-staged",
         "build": "npm run server:prod && npm run client:prod",
         "start": "pm2 start pm2.json",
         "start:dev": "supervisor ./dist/app.js",
@@ -16,6 +15,11 @@
         "test": "jest --coverage --forceExit",
         "test:e2e": "node ./tests/e2e.js",
         "docs": "jsdoc ./src/server/**/*.js -d ./docs/jsdocs"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
     },
     "author": "920997736@qq.com",
     "license": "ISC",
@@ -80,21 +84,28 @@
         "optimize-css-assets-webpack-plugin": "^4.0.3",
         "postcss-loader": "^2.1.4",
         "postcss-preset-env": "^5.2.1",
+        "progress-bar-webpack-plugin": "^1.11.0",
         "pump": "^3.0.0",
+        "purify-css": "^1.2.5",
+        "purifycss-webpack": "^0.7.0",
         "request": "^2.85.0",
         "request-promise": "^4.2.2",
         "rollup": "^0.57.1",
         "rollup-plugin-replace": "^2.0.0",
         "selenium-webdriver": "^4.0.0-alpha.1",
+        "set-iterm2-badge": "0.0.4",
+        "speed-measure-webpack-plugin": "^1.2.3",
         "style-loader": "^0.21.0",
         "supertest": "^3.0.0",
         "supervisor": "^0.12.0",
         "tinypng-webpack-plugin": "^2.0.0",
         "uglifyjs-webpack-plugin": "^1.2.7",
         "webpack": "^4.14.0",
+        "webpack-build-notifier": "^0.1.30",
         "webpack-cli": "^2.1.5",
+        "webpack-deep-scope-plugin": "^1.6.0",
         "webpack-merge": "^4.1.2",
-        "webpack-spritesmith": "^0.5.2",
+        "webpack-spritesmith": "^0.5.3",
         "yargs-parser": "^10.0.0"
     }
 }
