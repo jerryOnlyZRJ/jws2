@@ -14,6 +14,7 @@
         "client:prod": "webpack --mode production --module-bind js=eslint-loader!babel-loader",
         "test": "jest --coverage --forceExit",
         "test:e2e": "node ./tests/e2e.js",
+        "webpack:chart": "webpack --mode production --profile --json > stats.json",
         "docs": "jsdoc ./src/server/**/*.js -d ./docs/jsdocs"
     },
     "husky": {

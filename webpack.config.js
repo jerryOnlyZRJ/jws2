@@ -13,7 +13,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const htmlAfterWebpackPlugin = require('./build/webpackPlugins/htmlAfterWebpackPlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 图片压缩插件
-var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
+const tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
 
 // CSS tree-shaking
 // const PurifyCSSPlugin = require('purifycss-webpack');
@@ -24,6 +24,7 @@ var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
+// 文件变更Map
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 const HappyPack = require('happypack');
