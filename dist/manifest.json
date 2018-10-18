@@ -1,0 +1,12 @@
+{
+  "index-index.css": "/styles/index-index.f9e6a.css",
+  "index-index.js": "/scripts/index-index.f9e6a.js",
+  "common/utils.js": "/scripts/common/utils.f9e6a.js",
+  "common/runtime.js": "/scripts/common/runtime.f9e6a.js",
+  "images/common.css": "/images/common@2x-63cbc.png",
+  "../views/index/pages/index.html": "/../views/index/pages/index.html",
+  "../views/common/layout.html": "/../views/common/layout.html",
+  "../views/common/404.html": "/../views/common/404.html",
+  "../widgets/footer/footer.html": "/../widgets/footer/footer.html",
+  "../widgets/topbanner/topbanner.html": "/../widgets/topbanner/topbanner.html"
+}

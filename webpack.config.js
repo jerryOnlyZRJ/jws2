@@ -24,6 +24,8 @@ var tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
+const ManifestPlugin = require('webpack-manifest-plugin');
+
 const HappyPack = require('happypack');
 //使用自定义happypack配置
 // const happypackConfig = require('./build/happypack.js')
@@ -200,6 +202,9 @@ let _localConfig = {
             loaders: [{
                 loader: 'babel-loader',
             }]
+        }),
+        new ManifestPlugin({
+            fileName: '../manifest.json'
         }),
         new tinyPngWebpackPlugin({
             key: globProjectConfig.tinyPngPrivateKey, //can be Array, eg:['your key 1','your key 2'....]
