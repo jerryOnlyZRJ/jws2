@@ -33,7 +33,7 @@ module.exports = {
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
-        // 多核压缩
+        // 多核压缩，提升效率
         parallel: true,
         sourceMap: true // set to true if you want JS source maps
       }),
