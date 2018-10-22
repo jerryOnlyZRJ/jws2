@@ -7,7 +7,7 @@ const { minify } = require('html-minifier')
 // webapck深度tree-shaking
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 // 注入runtime.js
-const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
+// const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 
 module.exports = {
   output: {
@@ -43,7 +43,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new InlineManifestWebpackPlugin('common/runtime'),
+    // new InlineManifestWebpackPlugin('common/runtime'),
     new WebpackDeepScopeAnalysisPlugin(),
     new CopyWebpackPlugin([{
       from: 'src/client/views/common/layout.html',

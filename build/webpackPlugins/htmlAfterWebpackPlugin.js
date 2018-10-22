@@ -5,7 +5,6 @@ const assetsHelp = (data)=>{
         js:item=>`<script src="${item}"></script>`,
         css:item=>`<link rel="stylesheet" href="${item}">`
     };
-    js.push(data.runtime)
     for(let jsitem of data.js){
         js.push(dir.js(jsitem))
     }
