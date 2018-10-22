@@ -8,6 +8,7 @@ const assetsHelp = (data)=>{
     for(let jsitem of data.js){
         js.push(dir.js(jsitem))
     }
+    js.push(data.runtime)
     for(let cssitem of data.css){
         css.push(dir.css(cssitem))
     }
