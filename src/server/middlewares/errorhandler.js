@@ -2,7 +2,7 @@
  * @description 容错机制中间件
  * @author Jerry
  */
-import log4js from "./log4js";
+import log4js from "./log4js.config.js";
 
 const logger = log4js.getLogger("cheese");
 

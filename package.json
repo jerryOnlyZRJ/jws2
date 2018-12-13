@@ -19,13 +19,19 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "lint-staged",
+            "pre-push": "npm run test"
         }
     },
     "author": "920997736@qq.com",
     "license": "ISC",
     "lint-staged": {
-        "src/**/**/*.js": [
+        "src/server/**/*.js": [
+            "prettier --write",
+            "eslint --fix",
+            "git add"
+        ],
+        "src/client/**/**/*.js": [
             "prettier --write",
             "eslint --fix",
             "git add"
@@ -44,7 +50,8 @@
         "koa-static": "^4.0.2",
         "koa-swig": "^2.2.1",
         "lodash": "^4.17.5",
-        "log4js": "^3.0.5"
+        "log4js": "^3.0.5",
+        "pm2": "^3.2.2"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0",
@@ -108,7 +115,7 @@
         "webpack-deep-scope-plugin": "^1.6.0",
         "webpack-manifest-plugin": "^2.0.4",
         "webpack-merge": "^4.1.2",
-        "webpack-spritesmith": "^0.5.3",
+        "webpack-spritesmith": "^0.5.4",
         "yargs-parser": "^10.0.0"
     }
 }

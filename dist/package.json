@@ -14,17 +14,24 @@
         "client:prod": "webpack --mode production --module-bind js=eslint-loader!babel-loader",
         "test": "jest --coverage --forceExit",
         "test:e2e": "node ./tests/e2e.js",
+        "webpack:chart": "webpack --mode production --profile --json > stats.json",
         "docs": "jsdoc ./src/server/**/*.js -d ./docs/jsdocs"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "lint-staged",
+            "pre-push": "npm run test"
         }
     },
     "author": "920997736@qq.com",
     "license": "ISC",
     "lint-staged": {
-        "src/**/**/*.js": [
+        "src/server/**/*.js": [
+            "prettier --write",
+            "eslint --fix",
+            "git add"
+        ],
+        "src/client/**/**/*.js": [
             "prettier --write",
             "eslint --fix",
             "git add"
@@ -43,7 +50,8 @@
         "koa-static": "^4.0.2",
         "koa-swig": "^2.2.1",
         "lodash": "^4.17.5",
-        "log4js": "^3.0.5"
+        "log4js": "^3.0.5",
+        "pm2": "^3.2.2"
     },
     "devDependencies": {
         "@babel/core": "^7.0.0",
@@ -77,6 +85,7 @@
         "html-minifier": "^3.5.20",
         "html-webpack-plugin": "^3.2.0",
         "husky": "^0.15.0-rc.13",
+        "inline-manifest-webpack-plugin": "^4.0.2",
         "jest": "^22.4.3",
         "jsdoc": "^3.5.5",
         "lint-staged": "^7.2.2",
@@ -100,12 +109,13 @@
         "supervisor": "^0.12.0",
         "tinypng-webpack-plugin": "^2.0.0",
         "uglifyjs-webpack-plugin": "^1.2.7",
-        "webpack": "^4.14.0",
+        "webpack": "^4.19.1",
         "webpack-build-notifier": "^0.1.30",
         "webpack-cli": "^2.1.5",
         "webpack-deep-scope-plugin": "^1.6.0",
+        "webpack-manifest-plugin": "^2.0.4",
         "webpack-merge": "^4.1.2",
-        "webpack-spritesmith": "^0.5.3",
+        "webpack-spritesmith": "^0.5.4",
         "yargs-parser": "^10.0.0"
     }
 }

@@ -18,7 +18,7 @@ const tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
 // CSS tree-shaking
 // const PurifyCSSPlugin = require('purifycss-webpack');
 
-// webpack构建性能监控
+// webpack构建性能监控(与html-webpack-plugin不兼容)
 // const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 // const smp = new SpeedMeasurePlugin();
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
@@ -90,7 +90,7 @@ const spritesPlugins = spritesDirs.map(spritesDir => {
             // 生成iconfont class名称
             generateSpriteName: function () {
                 const imagePath = arguments[0]
-                const basenameIndex = imagePath.lastIndexOf('\\') >= 0 ? imagePath.lastIndexOf('\\') : imagePath.lastIndexOf('\/')
+                const basenameIndex = imagePath.lastIndexOf('\\') >= 0 ? imagePath.lastIndexOf('\\') : imagePath.lastIndexOf('/')
                 const fileName = imagePath.substr(basenameIndex + 1, imagePath.length)
                 // 雪碧图每个元素生成的类名：.icon-dirname-filename
                 // console.log(`icon-${dirName}-${fileName}`)
