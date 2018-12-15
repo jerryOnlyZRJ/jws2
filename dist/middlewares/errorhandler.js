@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @description 容错机制中间件
  * @author Jerry
  */
-const logger = _log4jsConfig.default.getLogger("cheese");
+const logger = _log4jsConfig.default.getLogger("mix");
 /**
  * 容错处理对象
  * @type {Object}

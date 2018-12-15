@@ -52,8 +52,8 @@ module.exports = {
       from: 'src/client/views/common/404.html',
       to: '../views/common/404.html'
     }, {
-      from: 'src/client/widgets/',
-      to: '../widgets',
+      from: 'src/client/components/',
+      to: '../components',
       transform(content, path) {
         return minify(content.toString('utf-8'), {
           // 去空格

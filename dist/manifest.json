@@ -1,12 +1,12 @@
 {
-  "index-index.css": "/styles/index-index.f9e6a.css",
-  "index-index.js": "/scripts/index-index.f9e6a.js",
-  "common/utils.js": "/scripts/common/utils.f9e6a.js",
-  "common/runtime.js": "/scripts/common/runtime.f9e6a.js",
+  "index-index.css": "/styles/index-index.81018.css",
+  "index-index.js": "/scripts/index-index.81018.js",
+  "common/utils.js": "/scripts/common/utils.81018.js",
+  "common/runtime.js": "/scripts/common/runtime.81018.js",
   "images/common.css": "/images/common@2x-63cbc.png",
   "../views/index/pages/index.html": "/../views/index/pages/index.html",
-  "../widgets/footer/footer.html": "/../widgets/footer/footer.html",
   "../views/common/layout.html": "/../views/common/layout.html",
-  "../widgets/topbanner/topbanner.html": "/../widgets/topbanner/topbanner.html",
-  "../views/common/404.html": "/../views/common/404.html"
+  "../views/common/404.html": "/../views/common/404.html",
+  "../components/footer/footer.html": "/../components/footer/footer.html",
+  "../components/topbanner/topbanner.html": "/../components/topbanner/topbanner.html"
 }

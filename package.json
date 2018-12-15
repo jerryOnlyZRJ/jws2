@@ -4,19 +4,22 @@
     "description": "Jerry's Web Scaffold",
     "main": "index.js",
     "scripts": {
-        "start": "pm2 start pm2.json",
-        "build": "npm run server:prod && npm run client:prod",
-        "test": "npm run test:unit",
-        "start:dev": "supervisor ./dist/app.js",
-        "server:dev": "cross-env NODE_ENV=development gulp",
-        "server:prod": "cross-env NODE_ENV=production gulp",
-        "server:lint": "cross-env NODE_ENV=lint gulp",
-        "client:dev": "webpack --mode development",
-        "client:prod": "webpack --mode production --module-bind js=eslint-loader!babel-loader",
-        "test:unit": "jest --coverage --forceExit",
-        "test:e2e": "node ./tests/e2e.js",
-        "webpack:chart": "webpack --mode production --profile --json > stats.json",
-        "docs": "jsdoc ./src/server/**/*.js -d ./docs/jsdocs"
+        "start": "scripty",
+        "build": "scripty",
+        "test": "scripty",
+        "start:dev": "scripty",
+        "server:dev": "scripty",
+        "server:prod": "scripty",
+        "server:lint": "scripty",
+        "client:dev": "scripty",
+        "client:prod": "scripty",
+        "test:unit": "scripty",
+        "test:e2e": "scripty",
+        "tools:webpack-chart": "scripty",
+        "tools:docs": "scripty"
+    },
+    "scripty": {
+        "parallel": true
     },
     "husky": {
         "hooks": {
@@ -97,6 +100,7 @@
         "request-promise": "^4.2.2",
         "rollup": "^0.57.1",
         "rollup-plugin-replace": "^2.0.0",
+        "scripty": "^1.8.0",
         "selenium-webdriver": "^4.0.0-alpha.1",
         "set-iterm2-badge": "0.0.4",
         "speed-measure-webpack-plugin": "^1.2.3",
