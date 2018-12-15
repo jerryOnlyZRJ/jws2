@@ -4,15 +4,16 @@
     "description": "Jerry's Web Scaffold",
     "main": "index.js",
     "scripts": {
-        "build": "npm run server:prod && npm run client:prod",
         "start": "pm2 start pm2.json",
+        "build": "npm run server:prod && npm run client:prod",
+        "test": "npm run test:unit",
         "start:dev": "supervisor ./dist/app.js",
-        "server:dev": "gulp",
+        "server:dev": "cross-env NODE_ENV=development gulp",
         "server:prod": "cross-env NODE_ENV=production gulp",
         "server:lint": "cross-env NODE_ENV=lint gulp",
         "client:dev": "webpack --mode development",
         "client:prod": "webpack --mode production --module-bind js=eslint-loader!babel-loader",
-        "test": "jest --coverage --forceExit",
+        "test:unit": "jest --coverage --forceExit",
         "test:e2e": "node ./tests/e2e.js",
         "webpack:chart": "webpack --mode production --profile --json > stats.json",
         "docs": "jsdoc ./src/server/**/*.js -d ./docs/jsdocs"
@@ -27,11 +28,6 @@
     "license": "ISC",
     "lint-staged": {
         "src/server/**/*.js": [
-            "prettier --write",
-            "eslint --fix",
-            "git add"
-        ],
-        "src/client/**/**/*.js": [
             "prettier --write",
             "eslint --fix",
             "git add"

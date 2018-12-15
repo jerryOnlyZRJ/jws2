@@ -4,7 +4,7 @@
  */
 import log4js from "./log4js.config.js";
 
-const logger = log4js.getLogger("cheese");
+const logger = log4js.getLogger("mix");
 
 /**
  * 容错处理对象

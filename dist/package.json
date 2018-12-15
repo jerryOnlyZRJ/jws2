@@ -7,7 +7,7 @@
         "build": "npm run server:prod && npm run client:prod",
         "start": "pm2 start pm2.json",
         "start:dev": "supervisor ./dist/app.js",
-        "server:dev": "gulp",
+        "server:dev": "cross-env NODE_ENV=development gulp",
         "server:prod": "cross-env NODE_ENV=production gulp",
         "server:lint": "cross-env NODE_ENV=lint gulp",
         "client:dev": "webpack --mode development",

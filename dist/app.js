@@ -59,6 +59,7 @@ app.context.render = _co.default.wrap((0, _koaSwig.default)({
 app.listen(CONFIG.port, () => {
   // eslint-disable-next-line
   console.log(`website is starting at port ${CONFIG.port}`);
-});
+}); //到处app供API集成测试使用
+
 var _default = app;
 exports.default = _default;
