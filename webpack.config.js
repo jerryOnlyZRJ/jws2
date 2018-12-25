@@ -151,6 +151,16 @@ let _localConfig = {
     },
     module: {
         rules: [{
+            enforce: 'pre',
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: [{
+                loader: 'code-metrics-loader',
+                options: {
+                    errorLimit: 5
+                }
+            }],
+        }, {
             test: /\.js|\.jsx$/,
             exclude: /node_modules/,
             // id与plugins中的插件实例相关联
@@ -209,7 +219,7 @@ let _localConfig = {
         }),
         new tinyPngWebpackPlugin({
             key: globProjectConfig.tinyPngPrivateKey, //can be Array, eg:['your key 1','your key 2'....]
-            ext: ['png', 'jpeg', 'jpg'],    //img ext name
+            ext: ['png', 'jpeg', 'jpg'], //img ext name
             // proxy:'http://user:pass@192.168.0.1:8080' //http proxy,eg:如果你来自中国，同时拥有shadowsocks，翻墙默认配置为 http:127.0.0.1:1080 即可。（注，该参数因为需要超时断开连接的原因，导致最后会延迟执行一会webpack。但相对于国内网络环境，用此参数还是非常划算的，测试原有两张图片，无此参数耗时2000ms+，有此参数耗时1000ms+节约近半。）
         }),
         ...spritesPlugins,

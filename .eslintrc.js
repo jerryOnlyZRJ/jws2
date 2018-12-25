@@ -14,6 +14,7 @@ module.exports = {
         "sourceType": "module" //es6 import
     },
     "rules": {
-        "no-unreachable": 2
+        "no-unreachable": 2,
+        "no-console": 0
     }
 }
