@@ -3,7 +3,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // 优化html，自动压缩并修复缺失标签
-const { minify } = require('html-minifier')
+const {
+  minify
+} = require('html-minifier')
 // webapck深度tree-shaking
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 // 注入runtime.js
@@ -30,17 +32,35 @@ module.exports = {
         }
       }
     },
-    runtimeChunk: { name: 'common/runtime' },
+    runtimeChunk: {
+      name: 'common/runtime'
+    },
     // js,css资源压缩
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
         // 多核压缩，提升效率
         parallel: true,
-        sourceMap: true // set to true if you want JS source maps
+        // set to true if you want JS source maps
+        sourceMap: true,
+        // 去除上线文件的console和debugger 
+        uglifyOptions: {
+          compress: {
+            drop_console: true,
+          }
+        }
       }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessorPluginOptions: {
+          preset: ['default', {
+            discardComments: {
+              removeAll: true,
+            }
+          }],
+        },
+      })
+    ],
   },
   plugins: [
     // new InlineManifestWebpackPlugin('common/runtime'),
@@ -61,7 +81,7 @@ module.exports = {
         });
       }
     }], {
-        ignore: ['*.js', '*.css'],
-      }),
+      ignore: ['*.js', '*.css'],
+    }),
   ]
 }

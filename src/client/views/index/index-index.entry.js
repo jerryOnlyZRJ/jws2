@@ -1,5 +1,5 @@
-import Topbanner from "@/components/topbanner/topbanner.js";
-import Footer from "@/components/footer/footer.js";
+import Topbanner from "@/components/topbanner/topbanner";
+import Footer from "@/components/footer/footer";
 const topbanner = new Topbanner();
 const footer = new Footer();
 topbanner.init();

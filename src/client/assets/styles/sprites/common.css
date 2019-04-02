@@ -16,13 +16,13 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 // HTML
 <i class="icon icon-home"></i>
 */
-.icon-common-circlelogoblue16h.png {
+.icon-common-CircleLogoBlue16h.png {
   background-image: url(../../images/sprites/common.png);
   background-position: 0px 0px;
   width: 16px;
   height: 16px;
 }
-.icon-common-circlelogoblue48h.png {
+.icon-common-CircleLogoBlue48h.png {
   background-image: url(../../images/sprites/common.png);
   background-position: -36px 0px;
   width: 48px;
@@ -31,11 +31,11 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 
 @media (-webkit-min-device-pixel-ratio: 2),
        (min-resolution: 192dpi) {
-  .icon-common-circlelogoblue16h.png {
+  .icon-common-CircleLogoBlue16h.png {
     background-image: url(../../images/sprites/common@2x.png);
     background-size: 84px 48px;
   }
-  .icon-common-circlelogoblue48h.png {
+  .icon-common-CircleLogoBlue48h.png {
     background-image: url(../../images/sprites/common@2x.png);
     background-size: 84px 48px;
   }

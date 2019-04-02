@@ -18,7 +18,7 @@ const tinyPngWebpackPlugin = require('tinypng-webpack-plugin');
 // CSS tree-shaking
 // const PurifyCSSPlugin = require('purifycss-webpack');
 
-// webpack构建性能监控(与html-webpack-plugin不兼容)
+// webpack构建性能监控(与html-webpack-plugin自定义事件不兼容)
 // const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 // const smp = new SpeedMeasurePlugin();
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
